@@ -10,9 +10,8 @@ description: |
   Replayboys OCIO Master Config
   --------------------------------------------------------------------------------------
   HEAVILY MODIFIED VERSION BY FINN JAEGER @ REPLAYBOYS.de 
-  This one uses ARRI ALF2 Rec709 rendering transform as default
+  This one uses ARRI ALF2 rendering transform as default showgrade, replace with your own showgrade lut for a particular show
   It has added sRGB and Non-color colorspaces to make Blender not loose its mind
-  Removed all the other nonsense that 99.99% of people dont need, you run a p3 DCI projector in Nuke? I doubt it, if you do this isnt for you. 
 
   Modified for use in Foundry Nuke (v1.0.0)
     - Aliases (Nuke > ACES):
@@ -20,7 +19,6 @@ description: |
         Gamma2.2 > Gamma 2.2 Rec.709 - Texture
         Gamma2.4 > Gamma 2.4 Rec.709 - Texture
 
-  Edited by Doug Walker to convert showgrade and FilmicBase as view transforms.
   
 
 roles:
