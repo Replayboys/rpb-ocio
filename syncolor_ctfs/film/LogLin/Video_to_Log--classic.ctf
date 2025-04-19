@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="510bbb72-9e32-40ac-ad25-c1273de68b6a" inverseOf="f12e9444-c021-4d56-bb29-c5eff411b11c" version="1.3">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Classic Cineon video-to-log.</Description>
+    <Description>(Log values below refBlack map to negative video values.)</Description>
+    <InputDescriptor>video RGB</InputDescriptor>
+    <OutputDescriptor>Cineon log (printing density)</OutputDescriptor>
+    <Log inBitDepth="16f" outBitDepth="12i" style="linToLog">
+        <LogParams gamma="1.333333" highlight="1.000000" refBlack=" 95.00" refWhite="685.00" shadow="0.000000" />
+    </Log>
+</ProcessList>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="a3943a81-1b84-441f-9865-19a4bb412eb6" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Integer-to-float identity transform.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Matrix inBitDepth="12i" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.000244200259 0.000000000000 0.000000000000
+0.000000000000 0.000244200259 0.000000000000
+0.000000000000 0.000000000000 0.000244200259
+        </Array>
+    </Matrix>
+</ProcessList>

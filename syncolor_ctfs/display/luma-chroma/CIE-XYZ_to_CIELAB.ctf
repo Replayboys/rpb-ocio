@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="5ac02dc7-1e02-4f87-af46-fa5a83d5232d" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>CIE-XYZ D65 to CIELAB L*, a*, b* (scaled by 1/100, neutrals at 0.0 chroma)</Description>
+    <InputDescriptor>CIE-XYZ D65 white</InputDescriptor>
+    <OutputDescriptor>CIELAB L*, a*, b* (scaled by 1/100, neutrals at 0.0 chroma)</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+1.052126646 0.000000000 0.000000000
+0.000000000 1.000000000 0.000000000
+0.000000000 0.000000000 0.918224931
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="16f" style="moncurveRev">
+        <GammaParams gamma="3.000000000000000" offset="0.160000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.00000000  1.00000000  0.00000000
+ 4.31034470 -4.31034470  0.00000000
+ 0.00000000  1.72413790 -1.72413790
+        </Array>
+    </Matrix>
+</ProcessList>

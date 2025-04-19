@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="5ac02dc7-1e02-4f87-af46-fa5a83d5232dx" version="1.8">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>CIE-XYZ to xyY (CIE xy chromaticity coordinates and luminance)</Description>
+    <InputDescriptor>CIE-XYZ</InputDescriptor>
+    <OutputDescriptor>xyY (CIE xy chromaticity coordinates and luminance)</OutputDescriptor>
+    <Function inBitDepth="16f" outBitDepth="16f" style="XYZ_to_xyY" />
+</ProcessList>

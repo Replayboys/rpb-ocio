@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="2a15953c-1f35-4357-8935-8ab0a3a0941d" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Eizo CE240W to CIE XYZ</Description>
+    <InputDescriptor>normalized RGB code values</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="2.600000000000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.4123907983 0.3575843275 0.1804807931
+0.2126390040 0.7151686549 0.0721923187
+0.0193308182 0.1191947833 0.9505321383
+        </Array>
+    </Matrix>
+</ProcessList>

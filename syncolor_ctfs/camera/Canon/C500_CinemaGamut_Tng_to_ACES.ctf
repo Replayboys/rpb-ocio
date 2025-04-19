@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Canon/C500_CinemaGamut_Tng_to_ACES" version="1.4">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/Canon</Hierarchy>
+            <UserFacingName>C500 CanonLog / CinemaGamut (Tung.)</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>C500 CanonLog / CinemaGamut (Tung.)</ShortName>
+            <ID>C500 CanonLog CinemaGamut</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Canon C500 CanonLog/CinemaGamut tungsten v1.1.1 to ACES2065-1</Description>
+    <InputDescriptor>normalized code values</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Log inBitDepth="10i" outBitDepth="32f" style="logToLin">
+        <LogParams gamma="0.927046" highlight="0.000000" refBlack=" 17.75" refWhite="128.00" shadow="-0.037357" />
+    </Log>
+    <Matrix inBitDepth="32f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.8174163103  0.0907557011  0.0918280110
+-0.0353613757  1.0656906366 -0.0303292107
+ 0.0103903664 -0.2992711067  1.2888807058
+        </Array>
+    </Matrix>
+</ProcessList>

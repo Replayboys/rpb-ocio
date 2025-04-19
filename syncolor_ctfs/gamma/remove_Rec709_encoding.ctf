@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="0cf89092-3cbf-460e-bbca-3ed6f8fad155" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Remove Rec 709 camera curve from linear values.</Description>
+    <InputDescriptor>gamma-encoded RGB</InputDescriptor>
+    <OutputDescriptor>linearized RGB</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="moncurveFwd">
+        <GammaParams gamma="2.222222222222222" offset="0.099000" />
+    </Gamma>
+</ProcessList>

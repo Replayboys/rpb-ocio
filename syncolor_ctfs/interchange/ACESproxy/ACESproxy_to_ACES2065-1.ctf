@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="db6036d6-f2df-4c7f-bd87-2072c664e654" inverseOf="64545a95-e5e4-4801-8ac7-a18da4b11b60" version="1.4">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>ACESproxy 1.0 to ACES2065-1</Description>
+    <Description>Note input is SMPTE range [64,940]</Description>
+    <InputDescriptor>ACESproxy (SMPTE range)</InputDescriptor>
+    <OutputDescriptor>ACES2065-1</OutputDescriptor>
+    <Range inBitDepth="10i" outBitDepth="16f">
+        <minInValue>64</minInValue>
+        <maxInValue>940</maxInValue>
+        <minOutValue>-9.7200000000e+00</minOutValue>
+        <maxOutValue>7.8000000000e+00</maxOutValue>
+    </Range>
+    <Log inBitDepth="16f" outBitDepth="16f" style="antiLog2" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.69545221329  0.14067870378  0.16386906803
+ 0.04479456320  0.85967111588  0.09553431720
+-0.00552588236  0.00402521016  1.00150072575
+        </Array>
+    </Matrix>
+</ProcessList>

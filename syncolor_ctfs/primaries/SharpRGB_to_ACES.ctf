@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="primaries/SharpRGB_to_ACES" name="Sharp RGB" version="1.5">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Scene-linear</Hierarchy>
+            <UserFacingName>Sharp RGB</UserFacingName>
+            <Tags>
+                <Maya />
+                <SceneLinearWorkingSpace />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>Sharp RGB</ShortName>
+            <ID>b24c918f-484f-39dc-91bc-ff0f1fb16f2f</ID>
+            <Primaries>
+                <Red x="0.689761" y="0.320608" />
+                <Green x="0.073583" y="0.900291" />
+                <Blue x="0.116608" y="0.037392" />
+                <White x="0.333333" y="0.333333" />
+            </Primaries>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Sharp primaries (Picture Perfect Rendering, Ward et. al.) to ACES</Description>
+    <InputDescriptor>Sharp RGB (linear)</InputDescriptor>
+    <OutputDescriptor>ACES</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.8182349801  0.0354250669  0.1463399380
+ 0.1122397110  0.7965855598  0.0911747217
+-0.0118390722  0.0178813729  0.9939576983
+        </Array>
+    </Matrix>
+</ProcessList>

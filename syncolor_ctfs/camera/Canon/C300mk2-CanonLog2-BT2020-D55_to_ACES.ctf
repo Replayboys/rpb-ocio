@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Canon/C300mk2-CanonLog2-BT2020-D55_to_ACES" version="1.4">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/Canon</Hierarchy>
+            <UserFacingName>C300mk2 CanonLog2 / BT2020 (D55)</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>C300mk2 CanonLog2 / BT2020 (D55)</ShortName>
+            <ID>C300mk2 CanonLog2 BT2020</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Canon C300mk2 CanonLog2/BT.2020 daylight v1.0 to ACES2065-1</Description>
+    <InputDescriptor>BT.2020 Gamut / Canon Log 2</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Log inBitDepth="10i" outBitDepth="32f" style="logToLin">
+        <LogParams gamma="0.493824" highlight="0.000000" refBlack=" 13.18" refWhite=" 95.00" shadow="-0.005515" />
+    </Log>
+    <Matrix inBitDepth="32f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.678891122341  0.158868417144  0.162240430713
+ 0.045570831746  0.860712766647  0.093716397882
+-0.000485710014  0.025060195476  0.975425541401
+        </Array>
+    </Matrix>
+</ProcessList>

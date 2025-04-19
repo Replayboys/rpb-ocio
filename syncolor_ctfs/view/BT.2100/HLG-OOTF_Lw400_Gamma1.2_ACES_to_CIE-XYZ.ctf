@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="view/BT.2100/HLG-OOTF_Lw400_Gamma1.2_ACES_to_CIE-XYZ" name="Rec.2100 HLG OOTF (Lw=400 nits, gamma=1.2)" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Rec.2100</Hierarchy>
+            <UserFacingName>Rec.2100 HLG OOTF (Lw=400 nits, gamma=1.2)</UserFacingName>
+            <Tags>
+                <Flame />
+                <PureView type="HDR video" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </OutputSpace>
+    </Info>
+    <Description>ITU-R BT.2100 HLG (Lb=0.000, Lw= 400, Gamma=1.20) OOTF view transform</Description>
+    <Description>HLG OOTF -- map scene-linear ACES to display-linear CIE-XYZ</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.49040961266 -0.26617091894 -0.22423860431
+-0.08016750216  1.18216705322 -0.10199961811
+ 0.00322763133 -0.03477647528  1.03154885769
+        </Array>
+    </Matrix>
+    <ACES inBitDepth="16f" outBitDepth="16f" style="Surround">
+        <ACESParams gamma="1.200000" />
+    </ACES>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+107.032211   0.000000   0.000000
+  0.000000 107.032211   0.000000
+  0.000000   0.000000 107.032211
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.00999999978 0.00000000000 0.00000000000
+0.00000000000 0.00999999978 0.00000000000
+0.00000000000 0.00000000000 0.00999999978
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.6369580626487731933593750 0.1446169018745422363281250 0.1688809692859649658203125
+0.2627002000808715820312500 0.6779980659484863281250000 0.0593017153441905975341797
+0.0000000000000000499410659 0.0280726924538612365722656 1.0609850883483886718750000
+        </Array>
+    </Matrix>
+</ProcessList>

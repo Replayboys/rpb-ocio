@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="5c2b521f-e8a4-41ac-805d-0f7e385afd59" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Subtract flare-offset amount = 0.0100 and clamp negatives.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="4 4 3">
+ 1.00000000000  0.00000000000  0.00000000000 -0.00999999978
+ 0.00000000000  1.00000000000  0.00000000000 -0.00999999978
+ 0.00000000000  0.00000000000  1.00000000000 -0.00999999978
+ 0.00000000000  0.00000000000  0.00000000000  1.00000000000
+        </Array>
+    </Matrix>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <minInValue>  0.0000</minInValue>
+        <minOutValue>  0.0000</minOutValue>
+    </Range>
+</ProcessList>

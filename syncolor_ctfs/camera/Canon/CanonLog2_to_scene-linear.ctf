@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Canon/CanonLog2_to_scene-linear" version="1.4">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/Canon</Hierarchy>
+            <UserFacingName>CanonLog2 / (no primaries)</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>CanonLog2 / (no primaries)</ShortName>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+        </OutputSpace>
+    </Info>
+    <Description>CanonLog2 to scene-linear (camera primaries)</Description>
+    <InputDescriptor>CanonLog2</InputDescriptor>
+    <OutputDescriptor>scene-linear (camera primaries)</OutputDescriptor>
+    <Log inBitDepth="10i" outBitDepth="16f" style="logToLin">
+        <LogParams gamma="0.493824" highlight="0.000000" refBlack=" 13.18" refWhite=" 95.00" shadow="-0.005515" />
+    </Log>
+</ProcessList>

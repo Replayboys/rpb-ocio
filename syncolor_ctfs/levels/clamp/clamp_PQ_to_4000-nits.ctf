@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="6c0af141-2968-4df7-ae90-11fc5260f870" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>Clamp ST-2084 (PQ) values to 4000 nits.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Range inBitDepth="12i" outBitDepth="12i">
+        <maxInValue>3.6960339506e+03</maxInValue>
+        <maxOutValue>3.6960339506e+03</maxOutValue>
+    </Range>
+</ProcessList>

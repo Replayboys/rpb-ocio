@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="1b341253-2470-4c5e-aa0d-367381b77cd2" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>10-bit full range to SMPTE (legal) range.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Range inBitDepth="10i" outBitDepth="10i">
+        <minInValue>  0.0000</minInValue>
+        <maxInValue>1023.0000</maxInValue>
+        <minOutValue> 64.0000</minOutValue>
+        <maxOutValue>940.0000</maxOutValue>
+    </Range>
+</ProcessList>

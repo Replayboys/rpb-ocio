@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/BT.709-camera/untonemapped_Rec709-camera_to_ACES" name="Rec-709 camera" version="1.3">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/generic</Hierarchy>
+            <UserFacingName>Rec.709 camera</UserFacingName>
+            <Tags>
+                <Flame />
+                <Maya />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>camera Rec 709</ShortName>
+            <ID>camera Rec 709</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Gamma-encoded Rec 709 camera to scene-linear values -- no inverse tone-mapping.</Description>
+    <InputDescriptor>gamma-encoded RGB (Rec 709 primaries)</InputDescriptor>
+    <OutputDescriptor>ACES</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="moncurveFwd">
+        <GammaParams gamma="2.222222222222222" offset="0.099000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>sRGB to ACES matrix</Description>
+        <Array dim="3 3 3">
+0.4395756721 0.3839125931 0.1765117198
+0.0896003842 0.8147141337 0.0956854597
+0.0174154826 0.1087343544 0.8738501668
+        </Array>
+    </Matrix>
+</ProcessList>

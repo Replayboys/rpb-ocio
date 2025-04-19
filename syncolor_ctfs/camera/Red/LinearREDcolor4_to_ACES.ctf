@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Red/LinearREDcolor4_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/RED</Hierarchy>
+            <UserFacingName>Scene-linear / REDcolor4</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>Scene-linear / REDcolor4</ShortName>
+            <ID>Scene-linear / REDcolor4</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>scene-linear REDcolor4 primaries to ACES2065-1</Description>
+    <InputDescriptor>REDcolor4 (linear)</InputDescriptor>
+    <OutputDescriptor>ACES2065-1</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.4742020071  0.3336769938  0.1921209991
+ 0.0651639998  0.8369320035  0.0979010016
+-0.0192809999  0.0163620003  1.0028899908
+        </Array>
+    </Matrix>
+</ProcessList>

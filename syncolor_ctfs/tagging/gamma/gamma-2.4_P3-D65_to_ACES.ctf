@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="tagging/gamma/gamma-2.4_P3-D65_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Textures</Hierarchy>
+            <UserFacingName>gamma 2.4 / DCI-P3 (D65 white)</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>gamma 2.4 / DCI-P3 (D65 white)</ShortName>
+            <ID>gamma 2.4 / DCI-P3 (D65 white)</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>De-gamma plus primary conversion matrix</Description>
+    <InputDescriptor>Nonlinear RGB values</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <Description>2.4 de-gamma</Description>
+        <GammaParams gamma="2.400000000000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>P3 D65 to ACES matrix</Description>
+        <Array dim="3 3 3">
+ 0.518933475018  0.286256581545  0.194809928536
+ 0.073859386146  0.819845139980  0.106295451522
+-0.000307011360  0.043807052076  0.956499934196
+        </Array>
+    </Matrix>
+</ProcessList>

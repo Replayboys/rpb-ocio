@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="b6cc01f1-6fb9-44e8-ba96-cee221668178" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Clamp dark values to 0.001000.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <minInValue>  0.0010</minInValue>
+        <minOutValue>  0.0010</minOutValue>
+    </Range>
+</ProcessList>

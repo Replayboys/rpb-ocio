@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="dfcbb9d0-82e4-44f6-83ff-a02ea1298f1b" name="ACES to P3-DCI" version="1.3">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>ACES Reference Rendering Transform + P3-DCI Output Device Transform</Description>
+    <Description>aces_dev version 0.1.1</Description>
+    <Description>Corresponds to odt_p3dci.ctl in aces_dev</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES)</InputDescriptor>
+    <OutputDescriptor>P3 RGB, ACES neutrals mapped to D60 assuming projector calib. white is DCI</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_v0.1.1.ctf" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.011959314346  0.008007966913 -0.015779377893
+ 0.005771078169  1.001361966133 -0.006287243217
+-0.000337622099 -0.001046614023  0.927584111691
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+1.009516119957 0.026967752725 0.021362002939
+0.018799243495 0.975330173969 0.008227297105
+0.000134541726 0.002179031959 1.138663291931
+        </Array>
+    </Matrix>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="12i" path="display/projector/CIE-XYZ_to_P3-DCI.ctf" />
+</ProcessList>

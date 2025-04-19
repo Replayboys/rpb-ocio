@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="f4968946-a661-43c5-a7c1-0df948dde000" name="ACES 1.0 to DCI (P3 clip)" version="1.7">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>ACES Reference Rendering Transform + DCDM (SMPTE ref. proj.) Output Device Transform</Description>
+    <Description>ACES 1.0</Description>
+    <Description>creative white: D60;  colors limited to the P3 gamut</Description>
+    <Description>Corresponds to ODT.Academy.DCDM_P3D60.a1.0.0.ctl in ACES 1.0</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>DCI X'Y'Z', ACES neutrals mapped to the D60 axis, clamped to P3 gamut</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_1.0.ctf" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 2.4282543659 -0.8829844594 -0.3902128339
+-0.8298796415  1.7610102892  0.0254841968
+ 0.0357496887 -0.0772555918  0.9579630494
+        </Array>
+    </Matrix>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <minInValue>0.0000000000e+00</minInValue>
+        <maxInValue>1.0000000000e+00</maxInValue>
+        <minOutValue>0.0000000000e+00</minOutValue>
+        <maxOutValue>1.0000000000e+00</maxOutValue>
+    </Range>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.497045665979 0.257803887129 0.195606365800
+0.234228849411 0.688681960106 0.077089190483
+0.000340577099 0.045918390155 1.042798757553
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.01303493977  0.00610525766 -0.01497094333
+ 0.00769822998  0.99816334248 -0.00503203832
+-0.00284131733  0.00468515651  0.92450612783
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.916555285 0.000000000 0.000000000
+0.000000000 0.916555285 0.000000000
+0.000000000 0.000000000 0.916555285
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.600000000000000" />
+    </Gamma>
+</ProcessList>

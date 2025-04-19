@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Red/LinearREDWideGamutRGB_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/RED</Hierarchy>
+            <UserFacingName>Scene-linear / REDWideGamutRGB</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+                <SceneLinearWorkingSpace />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>Scene-linear / REDWideGamutRGB</ShortName>
+            <ID>Scene-linear / REDWideGamutRGB</ID>
+            <Primaries>
+                <Red x="0.780308" y="0.304253" />
+                <Green x="0.121595" y="1.493994" />
+                <Blue x="0.095612" y="-0.084589" />
+                <White x="0.312700" y="0.329000" />
+            </Primaries>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>scene-linear REDWideGamutRGB primaries to ACES2065-1</Description>
+    <InputDescriptor>REDWideGamutRGB (linear)</InputDescriptor>
+    <OutputDescriptor>ACES2065-1</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.7850587964  0.0838587582  0.1310824454
+ 0.0231738351  1.0878975391 -0.1110713854
+-0.0737604350 -0.3145900667  1.3883504868
+        </Array>
+    </Matrix>
+</ProcessList>

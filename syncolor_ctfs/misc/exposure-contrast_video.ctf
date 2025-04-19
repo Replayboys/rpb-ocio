@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="9643cfa9-317f-4b9b-93e9-1731c118595b" name="expos/contr video" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Video space Exposure/Contrast control for viewer</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <ExposureContrast inBitDepth="12i" outBitDepth="12i" style="video">
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+    </ExposureContrast>
+</ProcessList>

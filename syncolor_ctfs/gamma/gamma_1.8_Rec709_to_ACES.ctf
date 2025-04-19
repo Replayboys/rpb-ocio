@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="gamma/gamma_1.8_Rec709_to_ACES" name="1.8 gamma" version="1.3">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Textures</Hierarchy>
+            <UserFacingName>gamma 1.8 / Rec.709</UserFacingName>
+            <Tags>
+                <Flame />
+                <Maya />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>gamma 1.8 Rec 709</ShortName>
+            <ID>gamma 1.8 Rec 709</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>1.8 gamma-encoded Rec 709 to scene-linear values -- no inverse tone-mapping.</Description>
+    <InputDescriptor>1.8 gamma-encoded RGB (Rec 709 primaries)</InputDescriptor>
+    <OutputDescriptor>ACES</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="1.800000000000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>sRGB to ACES matrix</Description>
+        <Array dim="3 3 3">
+0.4395756721 0.3839125931 0.1765117198
+0.0896003842 0.8147141337 0.0956854597
+0.0174154826 0.1087343544 0.8738501668
+        </Array>
+    </Matrix>
+</ProcessList>

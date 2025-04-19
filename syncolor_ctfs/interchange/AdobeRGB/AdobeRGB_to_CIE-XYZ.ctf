@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="interchange/AdobeRGB/AdobeRGB_to_CIE-XYZ" version="1.3">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Displays</Hierarchy>
+            <UserFacingName>AdobeRGB display</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+                <VideoWorkingSpace />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>AdobeRGB display</ShortName>
+            <ID>AdobeRGB display</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Adobe RGB to CIE XYZ</Description>
+    <InputDescriptor>normalized RGB code values</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="2.199218750000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.5766690373 0.1855582446 0.1882286519
+0.2973449826 0.6273635626 0.0752914548
+0.0270313621 0.0706888512 0.9913375378
+        </Array>
+    </Matrix>
+</ProcessList>

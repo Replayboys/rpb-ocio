@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="display/Eizo/CIE-XYZ_to_CG241W" version="1.3">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Displays/Eizo</Hierarchy>
+            <UserFacingName>Eizo CG241W (native)</UserFacingName>
+            <Tags>
+                <Flame />
+                <OutputTagOnly />
+                <Display type="SDR video" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>Eizo CG241W (native)</ShortName>
+            <ID>Eizo CG241W (native)</ID>
+        </OutputSpace>
+    </Info>
+    <Description>CIE XYZ to Eizo CG241W (native gamut, 2.5 gamma)</Description>
+    <InputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</InputDescriptor>
+    <OutputDescriptor>normalized RGB code values</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.9638895988 -0.5263267756 -0.3124386668
+-0.9190098047  1.8917459249 -0.0167737585
+ 0.0585614778 -0.1643793583  1.0180536509
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.500000000000000" />
+    </Gamma>
+</ProcessList>

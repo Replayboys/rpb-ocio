@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="2f2e19c7-0a16-45ad-a49a-43e12c81a03a" version="1.3">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>CIE XYZ to SD video (ITU-R BT.601), whitepoint calibrated to 9300K (assumes 2.4 monitor gamma per ITU-R BT.1886)</Description>
+    <InputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</InputDescriptor>
+    <OutputDescriptor>normalized RGB code values</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 4.0665159225 -2.1742696762 -0.6342862248
+-1.0494111776  1.9673073292  0.0276493188
+ 0.0438344181 -0.1432206184  1.0114779472
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.400000000000000" />
+    </Gamma>
+</ProcessList>

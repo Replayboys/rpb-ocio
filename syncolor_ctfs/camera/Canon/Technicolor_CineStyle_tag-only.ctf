@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Canon/Technicolor_CineStyle_tag-only" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/Canon</Hierarchy>
+            <UserFacingName>Technicolor Cinestyle</UserFacingName>
+            <Tags>
+                <Flame />
+                <InputTagOnly visible="false" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>Technicolor Cinestyle</ShortName>
+            <ID>Technicolor Cinestyle</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>Technicolor Cinestyle</ShortName>
+            <ID>Technicolor Cinestyle</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Technicolor CineStyle colour space -- tag-only</Description>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="4 4 4">
+    1     0     0     0
+    0     1     0     0
+    0     0     1     0
+    0     0     0     1
+        </Array>
+    </Matrix>
+</ProcessList>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="gamma/apply_2.222_gamma" name="Linear (1/0.45 gamma)" version="1.3">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Legacy</Hierarchy>
+            <UserFacingName>Linear (1/0.45 gamma)</UserFacingName>
+            <Tags>
+                <Flame />
+                <PureView type="Any SDR" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+        </OutputSpace>
+    </Info>
+    <Description>Apply 1/0.45 gamma to linear values.</Description>
+    <InputDescriptor>linearized RGB</InputDescriptor>
+    <OutputDescriptor>gamma-encoded RGB</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.222222222222222" />
+    </Gamma>
+</ProcessList>

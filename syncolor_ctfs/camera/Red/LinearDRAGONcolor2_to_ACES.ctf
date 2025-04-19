@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="camera/Red/LinearDRAGONcolor2_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Cameras/RED</Hierarchy>
+            <UserFacingName>Scene-linear / DRAGONcolor2</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>Scene-linear / DRAGONcolor2</ShortName>
+            <ID>Scene-linear / DRAGONcolor2</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>scene-linear DRAGONcolor2 primaries to ACES2065-1</Description>
+    <InputDescriptor>DRAGONcolor2 (linear)</InputDescriptor>
+    <OutputDescriptor>ACES2065-1</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.468452006578  0.331483989954  0.200064003468
+ 0.040787000209  0.857658028603  0.101553000510
+-0.047504000366 -0.000281999994  1.047760009766
+        </Array>
+    </Matrix>
+</ProcessList>

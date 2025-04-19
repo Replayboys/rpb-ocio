@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="45657dff-ca21-4f4a-8ae2-b9bf5b137d8b" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Eizo CG245W to CIE XYZ "Custom" preset (native gamut, 2.2 gamma)</Description>
+    <InputDescriptor>normalized RGB code values</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="2.200000000000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.56288397312 0.20075160265 0.18682034314
+0.25660887361 0.67534399033 0.06804714352
+0.00827770587 0.09842675924 0.98235327005
+        </Array>
+    </Matrix>
+</ProcessList>

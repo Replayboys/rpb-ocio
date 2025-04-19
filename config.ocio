@@ -1,0 +1,787 @@
+ocio_profile_version: 2.1
+
+environment:
+  {}
+search_path: "luts:luts/ACES2:luts/showgrade:luts/replayboys:luts/ARRI:luts/ARRI/alf2:luts/ARRI/reveal:luts/khronos:shotluts:syncolor_ctfs"
+strictparsing: true
+luma: [0.2126, 0.7152, 0.0722]
+name: REPLAYBOYS OCIO CONFIG
+description: |
+  Replayboys OCIO Master Config
+  --------------------------------------------------------------------------------------
+  HEAVILY MODIFIED VERSION BY FINN JAEGER @ REPLAYBOYS.de 
+  This one uses ARRI ALF2 Rec709 rendering transform as default
+  It has added sRGB and Non-color colorspaces to make Blender not loose its mind
+  Removed all the other nonsense that 99.99% of people dont need, you run a p3 DCI projector in Nuke? I doubt it, if you do this isnt for you. 
+
+  Modified for use in Foundry Nuke (v1.0.0)
+    - Aliases (Nuke > ACES):
+        Gamma1.8 > Gamma 1.8 Rec.709 - Texture
+        Gamma2.2 > Gamma 2.2 Rec.709 - Texture
+        Gamma2.4 > Gamma 2.4 Rec.709 - Texture
+
+  Edited by Doug Walker to convert showgrade and FilmicBase as view transforms.
+  
+
+roles:
+  aces_interchange: ACES2065-1
+  cie_xyz_d65_interchange: CIE-XYZ-D65
+  color_picking: sRGB - Texture
+  color_timing: ACEScct
+  compositing_log: ACEScct
+  data: Raw
+  matte_paint: sRGB - Texture
+  scene_linear: ACEScg
+  texture_paint: sRGB - Texture
+
+
+viewing_rules:
+  - !<Rule> {name: Any Log, encodings: log}
+  - !<Rule> {name: Any Scene-linear, encodings: scene-linear}
+  - !<Rule> {name: Any Scene-linear or Log, encodings: [log, scene-linear]}
+  - !<Rule> {name: Any Video, encodings: [sdr-video, hdr-video]}
+  - !<Rule> {name: Any Data, encodings: data}
+
+file_rules:
+#from houdini
+  - !<Rule> {name: srgb_tx, colorspace: sRGB - Texture, pattern: "*srgb_tx*", extension: "*"}
+  - !<Rule> {name: srgb_texture, colorspace: sRGB - Texture, pattern: "*srgb_texture*", extension: "*"}
+  - !<Rule> {name: lin_rec709, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_rec709*", extension: "*"}
+  - !<Rule> {name: lin_srgb, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_srgb*", extension: "*"}
+  - !<Rule> {name: __usdz_jpg, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[jJ][pP][gG]\\]"}
+  - !<Rule> {name: __usdz_jpeg, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[jJ][pP][eE][gG]\\]"}
+  - !<Rule> {name: __usdz_tga, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[tT][gG][aA]\\]"}
+  - !<Rule> {name: __usdz_png, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[pP][nN][gG]\\]"}
+  - !<Rule> {name: __usdz_tif, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[tT][iI][fF]\\]"}
+  - !<Rule> {name: __usdz_tiff, colorspace: sRGB - Texture, regex: ".*[uU][sS][dD][zZ]\\[.*[tT][iI][fF][fF]\\]"}
+  - !<Rule> {name: __usdz_exr, colorspace: Linear Rec.709 (sRGB), regex: ".*[uU][sS][dD][zZ]\\[.*[eE][xX][rR]\\]"}
+  - !<Rule> {name: jpg, colorspace: sRGB - Texture, pattern: "*", extension: jpg}
+  - !<Rule> {name: jpeg, colorspace: sRGB - Texture, pattern: "*", extension: jpeg}
+  - !<Rule> {name: tga, colorspace: sRGB - Texture, pattern: "*", extension: tga}
+  - !<Rule> {name: png, colorspace: sRGB - Texture, pattern: "*", extension: png}
+  - !<Rule> {name: tif, colorspace: sRGB - Texture, pattern: "*", extension: tif}
+  - !<Rule> {name: tiff, colorspace: sRGB - Texture, pattern: "*", extension: tiff}
+
+#from flame 
+  - !<Rule> {name: ACEScg, colorspace: ACEScg, pattern: "*[aA][cC][eE][sS][cC][gG]*", extension: "*"}
+  - !<Rule> {name: OpenEXR, colorspace: ACEScg, pattern: "*", extension: "[eE][xX][rR]"}
+
+  - !<Rule> {name: Default, colorspace: ACES2065-1}
+
+
+shared_views:
+  - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: <USE_DISPLAY_NAME>, rule: Any Video}
+  - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+
+displays:
+  Rec.709 video:
+    - !<View> {name: Raw, colorspace: Raw, rule: Any Data}
+    - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: Rec.709 video, rule: Any Video}
+    - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 2.0 Filmic, view_transform: ACES 2.0 Filmic, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI ALF2, view_transform: ARRI ALF2, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI Reveal, view_transform: ARRI Reveal, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+    - !<View> {name: Khronos Neutral, view_transform: Khronos Neutral, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+  
+  Display P3:
+    - !<View> {name: Raw, colorspace: Raw}
+    - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: Display P3, rule: Any Video}
+    - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 2.0 Filmic, view_transform: ACES 2.0 Filmic, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI ALF2, view_transform: ARRI ALF2, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI Reveal, view_transform: ARRI Reveal, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+    - !<View> {name: Khronos Neutral, view_transform: Khronos Neutral, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+
+  Rec.2100-PQ:
+    - !<View> {name: Raw, colorspace: Raw}
+    - !<View> {name: ACES 2.0 HDR 1000nit, view_transform: ACES 2.0 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 2.0 HDR P3Limited 1000nit, view_transform: ACES 2.0 HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 2.0 Filmic HDR 1000nit, view_transform: ACES 2.0 Filmic HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 1.0 HDR 1000nit, view_transform: ACES 1.0 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ACES 1.0 HDR P3Limited 1000nit, view_transform: ACES 1.0 HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI ALF2 HDR 1000nit, view_transform: ARRI ALF2 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI Reveal HDR 1000nit, view_transform: ARRI Reveal HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: ARRI Reveal HDR P3Limited 1000nit, view_transform: ARRI Reveal HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+
+active_displays: []
+active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit]
+inactive_colorspaces: [CIE-XYZ-D65, sRGB - Display]
+
+
+looks:
+  - !<Look>
+    name: ACES 1.3 Reference Gamut Compression
+    process_space: ACES2065-1
+    description: |
+      LMT (applied in ACES2065-1) to compress scene-referred values from common cameras into the AP1 gamut
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:LMT.Academy.GamutCompress.a1.3.0
+    transform: !<BuiltinTransform> {style: ACES-LMT - ACES 1.3 Reference Gamut Compression}
+
+  - !<Look>
+    name: Replayboys Filmic LMT
+    process_space: ACEScc
+    description: |
+      Replayboys Filmic LUT applied in ACEScc space
+    transform: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: replayboys/fj_AcesCC_2_AcesCC_LMT_filmic.cube, interpolation: tetrahedral}
+
+
+default_view_transform: Un-tone-mapped
+
+view_transforms:
+  - !<ViewTransform>
+    name: ACES 2.0 SDR
+    description: |
+      ACES 2.0 Testing Candidate CAMDRT rev060 - Rec.709 Output Transform
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScct}
+        - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec709.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: ACES 1.0 SDR
+    description: |
+      Component of ACES Output Transforms for SDR D65 video
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_100nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec709_100nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec2020_100nits_dim.a1.0.3
+    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: Un-tone-mapped
+    from_scene_reference: !<BuiltinTransform> {style: UTILITY - ACES-AP0_to_CIE-XYZ-D65_BFD}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: Showgrade
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
+        - !<FileTransform> {src: showgrade/showgrade.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: Replayboys Filmic
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
+        - !<FileTransform> {src: replayboys/fj_AcesCC_2_rec709_filmic.cube, interpolation: tetrahedral}        
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: Video (colorimetric)
+    description: colorimetric_view
+    from_display_reference: !<FileTransform> {src: view/colorimetric_view.ctf}
+    categories: [nt-view]
+
+  - !<ViewTransform>
+    name: ARRI ALF2
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
+        - !<FileTransform> {src: ARRI/alf2/ARRI_LogC2Video_709_33.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: ARRI Reveal
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC4}
+        - !<FileTransform> {src: ARRI/reveal/ARRI_LogC4-to-Gamma24_Rec709-D65_v1-65.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: Khronos Neutral
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: Linear Rec.709 (sRGB)}
+        - !<AllocationTransform> {allocation: lg2, vars: [-9, 10]}
+        - !<FileTransform> {src: khronos/pbrNeutral.cube, interpolation: tetrahedral}
+        - !<ExponentTransform> {value: 2.2, direction: inverse}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: ACES 1.0 HDR 1000nit
+    description: |
+      Component of ACES Output Transforms for HDR D65 video
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_1000nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec709_1000nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec2020_1000nits_dim.a1.0.3
+    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0, params: {max_display_luminance: 1000, surround: dim}}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ACES 2.0 HDR 1000nit
+    description: |
+      ACES 2.0 Testing Candidate CAMDRT rev060 - Rec.2100-PQ Output Transform
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScct}
+        - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec2100 (P3D65 1000nit Limited).cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ARRI ALF2 HDR 1000nit
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
+        - !<FileTransform> {src: ARRI/alf2/ARRI_LogC2Video_2100PQ-PW-1k-DW100_davinci3d_33.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ARRI Reveal HDR 1000nit
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC4}
+        - !<FileTransform> {src: ARRI/reveal/ARRI_LogC4-to-St2084_1K_Rec2100-D65_DW100_v1_65.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ARRI Reveal HDR P3Limited 1000nit
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC4}
+        - !<FileTransform> {src: ARRI/reveal/ARRI_LogC4-to-St2084_1K_Rec2100-P3lim-D65_DW100_v1_65.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ACES 2.0 HDR P3Limited 1000nit
+    description: |
+      ACES 2.0 Testing Candidate CAMDRT rev060 - Rec.2100-PQ Output Transform with P3 Limited Gamut
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScct}
+        - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec2100 (P3D65 1000nit Limited).cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ACES 1.0 HDR P3Limited 1000nit
+    description: |
+      Component of ACES Output Transforms for HDR D65 video with P3 Limited Gamut
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_1000nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec709_1000nits_dim.a1.0.3
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec2020_1000nits_dim.a1.0.3
+    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0, params: {max_display_luminance: 1000, surround: dim, primaries: p3}}
+    categories: [hdr-view]
+
+  - !<ViewTransform>
+    name: ACES 2.0 Filmic
+    description: |
+      ACES 2.0 Testing Candidate CAMDRT rev060 - Rec.709 Output Transform with Replayboys Filmic LMT
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
+        - !<FileTransform> {src: replayboys/fj_AcesCC_2_AcesCC_LMT_filmic.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: ACEScc, dst: ACEScct}
+        - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec709.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+    categories: [sdr-view]
+
+  - !<ViewTransform>
+    name: ACES 2.0 Filmic HDR 1000nit
+    description: |
+      ACES 2.0 Testing Candidate CAMDRT rev060 - Rec.2100-PQ Output Transform with Replayboys Filmic LMT
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
+        - !<FileTransform> {src: replayboys/fj_AcesCC_2_AcesCC_LMT_filmic.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: ACEScc, dst: ACEScct}
+        - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec2100 (P3D65 1000nit Limited).cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
+display_colorspaces:
+  - !<ColorSpace>
+    name: CIE-XYZ-D65
+    aliases: [cie_xyz_d65]
+    family: ""
+    equalitygroup: ""
+    bitdepth: 32f
+    description: The "CIE XYZ (D65)" display connection colorspace.
+    isdata: false
+    allocation: uniform
+
+  - !<ColorSpace>
+    name: sRGB - Display
+    aliases: [srgb_display]
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to sRGB (piecewise EOTF)
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_sRGB}
+
+  - !<ColorSpace>
+    name: Rec.709 video
+    aliases: [rec1886_rec709_display]
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to Rec.1886/Rec.709 (HD video)
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_REC.1886-REC.709}
+
+  - !<ColorSpace>
+    name: Rec.2100-PQ - Display
+    aliases: [rec2100_pq_display]
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to Rec.2100-PQ
+    isdata: false
+    categories: [file-io]
+    encoding: hdr-video
+    allocation: uniform
+    from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_REC.2100-PQ}
+
+  - !<ColorSpace>
+    name: ST2084-P3-D65 - Display
+    aliases: [st2084_p3d65_display]
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to ST-2084 (PQ), P3-D65 primaries
+    isdata: false
+    categories: [file-io]
+    encoding: hdr-video
+    allocation: uniform
+    from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_ST2084-P3-D65}
+
+  - !<ColorSpace>
+    name: P3-D65 - Display
+    aliases: [p3d65_display]
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to Gamma 2.6, P3-D65
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_G2.6-P3-D65}
+
+  - !<ColorSpace>
+    name: Display P3
+    family: Display
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert CIE XYZ (D65 white) to Display P3
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_display_reference: !<GroupTransform>
+      children:
+        - !<MatrixTransform> {matrix: [2.493496911, -0.9313836179, -0.4027107845, 0, -0.8294889696, 1.762664062, 0.023624685, 0, 0.0358458302, -0.0761723893, 0.9568845240, 0, 0, 0, 0, 1]}
+        - !<ExponentTransform> {value: 2.4, direction: inverse}
+
+colorspaces:
+  - !<ColorSpace>
+    name: ACES2065-1
+    aliases: [aces2065_1, ACES - ACES2065-1, lin_ap0]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: The "Academy Color Encoding System" reference colorspace.
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+
+  - !<ColorSpace>
+    name: showgrade
+    family: Output/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: 
+    isdata: false
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
+        - !<FileTransform> {src: showgrade.cube, interpolation: tetrahedral}
+      
+  - !<ColorSpace>
+    name: ReplayboysFilmicBase
+    family: Output/REPLAYBOYS
+    equalitygroup: ""
+    bitdepth: 32f
+    description: 
+    isdata: false
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
+        - !<FileTransform> {src: fj_AcesCC_2_rec709_filmic.cube, interpolation: tetrahedral}        
+
+  - !<ColorSpace>
+    name: ACEScc
+    aliases: [ACES - ACEScc, acescc_ap1]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACEScc to ACES2065-1
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.ACEScc_to_ACES.a1.0.3
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: ACEScc_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: ACEScct
+    aliases: [ACES - ACEScct, acescct_ap1]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACEScct to ACES2065-1
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.ACEScct_to_ACES.a1.0.3
+    isdata: false
+    categories: [file-io, working-space]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: ACEScct_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: ACEScg
+    aliases: [ACES - ACEScg, lin_ap1]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACEScg to ACES2065-1
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.ACEScg_to_ACES.a1.0.3
+    isdata: false
+    categories: [file-io, working-space]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: ACEScg_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: Linear P3-D65
+    aliases: [lin_p3d65, Utility - Linear - P3-D65]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to linear P3 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Linear_P3-D65:1.0
+    isdata: false
+    categories: [file-io, working-space]
+    encoding: scene-linear
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Linear P3-D65
+      children:
+        - !<MatrixTransform> {matrix: [2.02490528596679, -0.689069761034766, -0.335835524932019, 0, -0.183597032256178, 1.28950620775902, -0.105909175502841, 0, 0.00905856112234766, -0.0592796840575522, 1.0502211229352, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear Rec.2020
+    aliases: [lin_rec2020, Utility - Linear - Rec.2020]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to linear Rec.2020 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Linear_Rec2020:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Linear Rec.2020
+      children:
+        - !<MatrixTransform> {matrix: [1.49040952054172, -0.26617091926613, -0.224238601275593, 0, -0.0801674998722558, 1.18216712109757, -0.10199962122531, 0, 0.00322763119162216, -0.0347764757450576, 1.03154884455344, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear Rec.709 (sRGB)
+    aliases: [lin_rec709_srgb, Utility - Linear - Rec.709, lin_rec709, lin_srgb, Utility - Linear - sRGB]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to linear Rec.709 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Linear_Rec709:1.0
+    isdata: false
+    categories: [file-io, working-space]
+    encoding: scene-linear
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Linear Rec.709 (sRGB)
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Gamma 1.8 Rec.709 - Texture
+    aliases: [g18_rec709_tx, Utility - Gamma 1.8 - Rec.709 - Texture, g18_rec709, Gamma1.8]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to 1.8 gamma-corrected Rec.709 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Gamma1.8_Rec709-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Gamma 1.8 Rec.709 - Texture
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+        - !<ExponentTransform> {value: 1.8, style: pass_thru, direction: inverse}
+
+  - !<ColorSpace>
+    name: Gamma 2.2 AP1 - Texture
+    aliases: [g22_ap1_tx, g22_ap1]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to 2.2 gamma-corrected AP1 primaries, D60 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Gamma2.2_AP1-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Gamma 2.2 AP1 - Texture
+      children:
+        - !<MatrixTransform> {matrix: [1.45143931614567, -0.23651074689374, -0.214928569251925, 0, -0.0765537733960206, 1.17622969983357, -0.0996759264375522, 0, 0.00831614842569772, -0.00603244979102102, 0.997716301365323, 0, 0, 0, 0, 1]}
+        - !<ExponentTransform> {value: 2.2, style: pass_thru, direction: inverse}
+
+  - !<ColorSpace>
+    name: Gamma 2.2 Rec.709 - Texture
+    aliases: [g22_rec709_tx, Utility - Gamma 2.2 - Rec.709 - Texture, g22_rec709, Gamma2.2]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to 2.2 gamma-corrected Rec.709 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Gamma2.2_Rec709-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Gamma 2.2 Rec.709 - Texture
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+        - !<ExponentTransform> {value: 2.2, style: pass_thru, direction: inverse}
+
+  - !<ColorSpace>
+    name: Gamma 2.4 Rec.709 - Texture
+    aliases: [g24_rec709_tx, g24_rec709, rec709_display, Utility - Rec.709 - Display, Gamma2.4]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to 2.4 gamma-corrected Rec.709 primaries, D65 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_Gamma2.4_Rec709-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to Gamma 2.4 Rec.709 - Texture
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+        - !<ExponentTransform> {value: 2.4, style: pass_thru, direction: inverse}
+
+  - !<ColorSpace>
+    name: sRGB Encoded AP1 - Texture
+    aliases: [srgb_encoded_ap1_tx, srgb_ap1]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to sRGB Encoded AP1 primaries, D60 white point
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_sRGB_Encoded_AP1-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to sRGB Encoded AP1 - Texture
+      children:
+        - !<MatrixTransform> {matrix: [1.45143931614567, -0.23651074689374, -0.214928569251925, 0, -0.0765537733960206, 1.17622969983357, -0.0996759264375522, 0, 0.00831614842569772, -0.00603244979102102, 0.997716301365323, 0, 0, 0, 0, 1]}
+        - !<ExponentWithLinearTransform> {gamma: 2.4, offset: 0.055, direction: inverse}
+
+  - !<ColorSpace>
+    name: sRGB - Texture
+    aliases: [srgb_tx, Utility - sRGB - Texture, srgb_texture, Input - Generic - sRGB - Texture]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to sRGB
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_sRGB-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to sRGB Rec.709
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+        - !<ExponentWithLinearTransform> {gamma: 2.4, offset: 0.055, direction: inverse}
+
+  - !<ColorSpace>
+    name: sRGB
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ACES2065-1 to sRGB
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:AP0_to_sRGB-Texture:1.0
+    isdata: false
+    categories: [file-io]
+    allocation: uniform
+    from_scene_reference: !<GroupTransform>
+      name: AP0 to sRGB Rec.709
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+        - !<ExponentWithLinearTransform> {gamma: 2.4, offset: 0.055, direction: inverse}        
+
+  - !<ColorSpace>
+    name: ARRI LogC4
+    aliases: [arri_logc4, ARRILogC4]
+    family: Input/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ARRI LogC4 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:ARRI:Input:ARRI_LogC4_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: ARRI LogC4 to ACES2065-1
+      children:
+        - !<LogCameraTransform> {log_side_slope: 0.0647954196341293, log_side_offset: -0.295908392682586, lin_side_slope: 2231.82630906769, lin_side_offset: 64, lin_side_break: -0.0180569961199113, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.750957362824734, 0.144422786709757, 0.104619850465509, 0, 0.000821837079380207, 1.007397584885, -0.00821942196438358, 0, -0.000499952143533471, -0.000854177231436971, 1.00135412937497, 0, 0, 0, 0, 1]}
+
+
+  - !<ColorSpace>
+    name: ARRI LogC3 (EI800)
+    aliases: [arri_logc3_ei800, Input - ARRI - V3 LogC (EI800) - Wide Gamut, logc3ei800_alexawide, AlexaV3LogC]
+    family: Input/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ARRI LogC3 (EI800) to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:ARRI:Input:ARRI_LogC3_EI800_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: ARRI LogC3 (EI800) to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.247189638318671, log_side_offset: 0.385536998692443, lin_side_slope: 5.55555555555556, lin_side_offset: 0.0522722750251688, lin_side_break: 0.0105909904954696, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.680205505106279, 0.236136601606481, 0.0836578932872399, 0, 0.0854149797421404, 1.01747087860704, -0.102885858349182, 0, 0.00205652166929683, -0.0625625003847921, 1.0605059787155, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Raw
+    aliases: [Utility - Raw]
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: The utility "Raw" colorspace.
+    isdata: true
+    categories: [file-io]
+    encoding: data
+    allocation: uniform
+
+  - !<ColorSpace>
+    name: Non-Color
+    family: Utility
+    equalitygroup: ""
+    bitdepth: 32f
+    description: The utility "Raw" colorspace.
+    isdata: true
+    categories: [file-io]
+    allocation: uniform
+
+named_transforms:
+  - !<NamedTransform>
+    name: Rec.1886 - Curve
+    aliases: [rec1886_crv, Utility - Curve - Rec.1886, crv_rec1886]
+    description: |
+      Convert generic linear RGB to generic gamma-corrected RGB
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:Linear_to_Rec1886-Curve:1.0
+    family: Utility
+    categories: [file-io]
+    encoding: sdr-video
+    inverse_transform: !<GroupTransform>
+      name: Linear to Rec.1886
+      children:
+        - !<ExponentTransform> {value: 2.4, style: pass_thru, direction: inverse}
+
+  - !<NamedTransform>
+    name: sRGB - Curve
+    aliases: [srgb_crv, Utility - Curve - sRGB, crv_srgb]
+    description: |
+      Convert generic linear RGB to generic gamma-corrected RGB
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Utility:Linear_to_sRGB-Curve:1.0
+    family: Utility
+    categories: [file-io]
+    encoding: sdr-video
+    inverse_transform: !<GroupTransform>
+      name: Linear to sRGB
+      children:
+        - !<ExponentWithLinearTransform> {gamma: 2.4, offset: 0.055, direction: inverse}

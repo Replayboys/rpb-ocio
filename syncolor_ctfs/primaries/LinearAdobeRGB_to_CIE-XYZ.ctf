@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="9c64a084-bf41-4125-940f-49808d8c326e" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>LinearAdobeRGB primaries to CIE XYZ (D65)</Description>
+    <InputDescriptor>linear LinearAdobeRGB RGB</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.5766690373 0.1855582446 0.1882286519
+0.2973449826 0.6273635626 0.0752914548
+0.0270313621 0.0706888512 0.9913375378
+        </Array>
+    </Matrix>
+</ProcessList>

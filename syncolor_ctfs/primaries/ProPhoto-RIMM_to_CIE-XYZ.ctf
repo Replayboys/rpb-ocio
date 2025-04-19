@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="a3566d09-1200-4588-904d-19fa2472d6bf" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>ProPhoto-RIMM primaries to CIE XYZ (D65)</Description>
+    <InputDescriptor>linear ProPhoto-RIMM RGB</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.75727987289 0.10885178298 0.08432430029
+0.27081170678 0.70818310976 0.02100519091
+0.00237396290 0.00334627926 1.08333754539
+        </Array>
+    </Matrix>
+</ProcessList>

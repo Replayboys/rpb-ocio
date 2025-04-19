@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="3dfab86c-9432-4219-9a1a-18cff6c1f32a" version="1.3">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>DCI 52.37 / 48 headroom normalization scaling</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+1.09104168 0.00000000 0.00000000
+0.00000000 1.09104168 0.00000000
+0.00000000 0.00000000 1.09104168
+        </Array>
+    </Matrix>
+</ProcessList>

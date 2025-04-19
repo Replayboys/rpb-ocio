@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="203949a9-3034-49aa-ae20-9dfbb84f94a8" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Add flare-offset amount = 0.0050.</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="4 4 3">
+1.00000000000 0.00000000000 0.00000000000 0.00499999989
+0.00000000000 1.00000000000 0.00000000000 0.00499999989
+0.00000000000 0.00000000000 1.00000000000 0.00499999989
+0.00000000000 0.00000000000 0.00000000000 1.00000000000
+        </Array>
+    </Matrix>
+</ProcessList>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="794f7f30-cb66-43fd-b876-1a60b055f762" name="ACES 1.0 to sRGB" version="1.7">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>ACES Reference Rendering Transform + sRGB Output Device Transform</Description>
+    <Description>ACES 1.0</Description>
+    <Description>calibration white: D65, creative white: D65</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>sRGB</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_1.0.ctf" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.66058528423 -0.31529554725 -0.24150933325
+-0.65992605686  1.60839140415  0.01729859784
+ 0.00900256913 -0.00356687629  0.91364330053
+        </Array>
+    </Matrix>
+    <ACES inBitDepth="16f" outBitDepth="16f" style="DarkToDim10" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.94905602932 0.04718572274 0.00375826610
+0.01905601099 0.97718572617 0.00375826610
+0.01905601099 0.04718572274 0.93375825882
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.65223753452  0.12823612988  0.16998225451
+ 0.26767218113  0.67434000969  0.05798783153
+-0.00538181560  0.00136906025  1.09307050705
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 3.2409698963 -1.5373831987 -0.4986107647
+-0.9692436457  1.8759675026  0.0415550582
+ 0.0556300804 -0.2039769590  1.0569715500
+        </Array>
+    </Matrix>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <minInValue>0.0000000000e+00</minInValue>
+        <maxInValue>1.0000000000e+00</maxInValue>
+        <minOutValue>0.0000000000e+00</minOutValue>
+        <maxOutValue>1.0000000000e+00</maxOutValue>
+    </Range>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="moncurveRev">
+        <GammaParams gamma="2.400000000000000" offset="0.055000" />
+    </Gamma>
+</ProcessList>

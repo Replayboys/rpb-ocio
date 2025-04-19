@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="8b68faa6-a0f9-4bbc-a5ed-a92321b17480" version="1.7">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>De-gamma plus primary conversion matrix</Description>
+    <InputDescriptor>Nonlinear RGB values</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="moncurveFwd">
+        <Description>srgb de-gamma</Description>
+        <GammaParams gamma="2.400000000000000" offset="0.055000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>REC 709 to ACES matrix</Description>
+        <Array dim="3 3 3">
+0.4396329820 0.3829886913 0.1773783267
+0.0897764415 0.8134394288 0.0967841297
+0.0175411701 0.1115465537 0.8709122539
+        </Array>
+    </Matrix>
+</ProcessList>

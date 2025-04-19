@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="display/Eizo/CIE-XYZ_to_CG277" version="1.4">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Displays/Eizo</Hierarchy>
+            <UserFacingName>Eizo CG277W (native)</UserFacingName>
+            <Tags>
+                <Flame />
+                <OutputTagOnly />
+                <Display type="SDR video" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>Eizo CG277W (native)</ShortName>
+            <ID>Eizo CG277W (native)</ID>
+        </OutputSpace>
+    </Info>
+    <Description>CIE XYZ to Eizo CG277 "Custom" preset (native gamut, 2.2 gamma, D65 white)</Description>
+    <InputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</InputDescriptor>
+    <OutputDescriptor>normalized RGB code values</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 2.0331749916 -0.5667836070 -0.3357577026
+-0.7806800008  1.7115576267  0.0279547554
+ 0.0511930734 -0.1447612792  1.0064705610
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.200000000000000" />
+    </Gamma>
+</ProcessList>

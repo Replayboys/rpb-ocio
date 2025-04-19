@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="32472de3-4174-4a2a-aab9-93d050c72a6c" name="ACES to sRGB" version="1.3">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>ACES Reference Rendering Transform + sRGB Output Device Transform</Description>
+    <Description>aces_dev version 0.1.1</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES)</InputDescriptor>
+    <OutputDescriptor>sRGB</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_v0.1.1.ctf" />
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="12i" path="interchange/sRGB/CIE-XYZ_to_sRGB.ctf" />
+</ProcessList>

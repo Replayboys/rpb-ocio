@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="view/ACES/ACES_to_CIE-XYZ_cinema_1.0" name="ACES10_SDR-cinema" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>ACES Output</Hierarchy>
+            <UserFacingName>ACES 1.0 SDR-cinema</UserFacingName>
+            <Tags>
+                <Flame />
+                <PureView type="SDR cinema" />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </OutputSpace>
+    </Info>
+    <Description>ACES Reference Rendering Transform + first part of Output Device Transform</Description>
+    <Description>ACES 1.0</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_1.0.ctf" />
+</ProcessList>

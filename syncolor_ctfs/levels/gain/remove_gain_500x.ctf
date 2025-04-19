@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="89318301-9d17-45d0-87cf-7b75c9cf3a425" version="1.3">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>Scale by 1/500</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.0050000000 0.0000000000 0.0000000000
+0.0000000000 0.0050000000 0.0000000000
+0.0000000000 0.0000000000 0.0050000000
+        </Array>
+    </Matrix>
+</ProcessList>

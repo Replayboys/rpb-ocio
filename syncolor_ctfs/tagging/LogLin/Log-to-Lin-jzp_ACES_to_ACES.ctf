@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="tagging/LogLin/Log-to-Lin-jzp_ACES_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Log</Hierarchy>
+            <UserFacingName>Log-to-Lin (jzp) / ACES2065-1</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>Log-to-Lin (jzp) / ACES2065-1</ShortName>
+            <ID>Log-to-Lin (jzp) / ACES2065-1</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Log-to-lin plus primary conversion matrix</Description>
+    <InputDescriptor>Nonlinear RGB values</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Log inBitDepth="12i" outBitDepth="16f" style="logToLin">
+        <Description>Josh Pines style log-to-lin (445 maps to 0.18, does not create negative values).</Description>
+        <LogParams gamma="0.600000" highlight="0.180000" refBlack="-100000.00" refWhite="445.00" shadow="0.000000" />
+    </Log>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>ACES to ACES matrix</Description>
+        <Array dim="3 3 3">
+    1     0     0
+    0     1     0
+    0     0     1
+        </Array>
+    </Matrix>
+</ProcessList>

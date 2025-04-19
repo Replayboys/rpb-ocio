@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="ee1cbb5e-6e0e-4b79-83cf-8bd4ed10ce8e" version="1.2">
+    <Info>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Release>2019.1.84</Release>
+    </Info>
+    <Description>Remove gamma to obtain linearized values.</Description>
+    <InputDescriptor>gamma-encoded RGB</InputDescriptor>
+    <OutputDescriptor>linearized RGB</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="2.350000000000000" />
+    </Gamma>
+</ProcessList>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="21727073-196d-421b-bfe8-6c56f6136df1" name="ACES 1.0 to DCI-D65" version="1.7">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>ACES Reference Rendering Transform + DCDM (SMPTE ref. proj.) Output Device Transform</Description>
+    <Description>ACES 1.0</Description>
+    <Description>creative white: D65</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>DCI X'Y'Z', ACES neutrals mapped to the D65 axis</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_1.0.ctf" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+    1     0     0
+    0     1     0
+    0     0     1
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.916555285 0.000000000 0.000000000
+0.000000000 0.916555285 0.000000000
+0.000000000 0.000000000 0.916555285
+        </Array>
+    </Matrix>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.600000000000000" />
+    </Gamma>
+</ProcessList>

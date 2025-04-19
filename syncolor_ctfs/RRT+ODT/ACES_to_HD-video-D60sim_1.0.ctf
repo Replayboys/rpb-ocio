@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="c8b7552c-fd6b-43ca-a61e-63c62e3431bc" name="ACES 1.0 to HD (D60 sim.)" version="1.7">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>ACES Reference Rendering Transform + HD video Output Device Transform (D60 sim.)</Description>
+    <Description>ACES 1.0</Description>
+    <Description>calibration white: D65, creative white: D60</Description>
+    <Description>Corresponds to ODT.Academy.Rec709_D60sim_100nits_dim.a1.0.0.ctl in ACES 1.0</Description>
+    <InputDescriptor>Academy Color Encoding Specification (ACES2065-1)</InputDescriptor>
+    <OutputDescriptor>HD (Rec 709) video (D60 sim.)</OutputDescriptor>
+    <ExposureContrast inBitDepth="16f" outBitDepth="16f" style="linear">
+        <DynamicParameter param="EXPOSURE" />
+        <DynamicParameter param="CONTRAST" />
+        <ECParams contrast="1.0000" exposure="0.0000" pivot="0.1800" />
+    </ExposureContrast>
+    <Reference basePath="Autodesk" inBitDepth="16f" outBitDepth="16f" path="RRT+ODT/ACES_to_CIE-XYZ_1.0.ctf" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 1.66058528423 -0.31529554725 -0.24150933325
+-0.65992605686  1.60839140415  0.01729859784
+ 0.00900256913 -0.00356687629  0.91364330053
+        </Array>
+    </Matrix>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <maxInValue>1.0000000000e+00</maxInValue>
+        <maxOutValue>1.0000000000e+00</maxOutValue>
+    </Range>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.954999983 0.000000000 0.000000000
+0.000000000 0.954999983 0.000000000
+0.000000000 0.000000000 0.954999983
+        </Array>
+    </Matrix>
+    <ACES inBitDepth="16f" outBitDepth="16f" style="DarkToDim10" />
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.94905602932 0.04718572274 0.00375826610
+0.01905601099 0.97718572617 0.00375826610
+0.01905601099 0.04718572274 0.93375825882
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 0.65223753452  0.12823612988  0.16998225451
+ 0.26767218113  0.67434000969  0.05798783153
+-0.00538181560  0.00136906025  1.09307050705
+        </Array>
+    </Matrix>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+ 3.2727973461 -1.5171086788 -0.5017529130
+-0.9675540924  1.8667992353  0.0434884578
+ 0.0517817587 -0.1983106136  0.9773702621
+        </Array>
+    </Matrix>
+    <Range inBitDepth="16f" outBitDepth="16f">
+        <minInValue>0.0000000000e+00</minInValue>
+        <maxInValue>1.0000000000e+00</maxInValue>
+        <minOutValue>0.0000000000e+00</minOutValue>
+        <maxOutValue>1.0000000000e+00</maxOutValue>
+    </Range>
+    <Gamma inBitDepth="16f" outBitDepth="12i" style="basicRev">
+        <GammaParams gamma="2.400000000000000" />
+    </Gamma>
+</ProcessList>

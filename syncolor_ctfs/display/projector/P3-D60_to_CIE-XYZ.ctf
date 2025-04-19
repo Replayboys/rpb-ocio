@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="display/projector/P3-D60_to_CIE-XYZ" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Displays/DCI-P3</Hierarchy>
+            <UserFacingName>DCI-P3 (D60 white)</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>DCI-P3 (D60 white)</ShortName>
+            <ID>DCI-P3 (D60 white)</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>video</ImageState>
+            <ShortName>CIE-XYZ</ShortName>
+            <ID>2</ID>
+        </OutputSpace>
+    </Info>
+    <Description>P3 D60 to CIE XYZ (assumes projector calibration with D60 whitepoint, 2.6 gamma)</Description>
+    <InputDescriptor>normalized RGB code values</InputDescriptor>
+    <OutputDescriptor>linear encoding; CIE 1931 XYZ prims; D65 wtpt; output-referred</OutputDescriptor>
+    <Gamma inBitDepth="12i" outBitDepth="16f" style="basicFwd">
+        <GammaParams gamma="2.600000000000000" />
+    </Gamma>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Array dim="3 3 3">
+0.497045665979 0.257803887129 0.195606365800
+0.234228849411 0.688681960106 0.077089190483
+0.000340577099 0.045918390155 1.042798757553
+        </Array>
+    </Matrix>
+</ProcessList>

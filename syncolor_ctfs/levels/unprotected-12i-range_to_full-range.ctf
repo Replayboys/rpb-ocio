@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="08fb20ce-9a7a-4571-8411-77fe537d4071" version="1.3">
+    <Info version="1.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+    </Info>
+    <Description>Unprotected-SDI-range to full-range (as used in SMPTE ST2084)</Description>
+    <InputDescriptor>generic RGB</InputDescriptor>
+    <OutputDescriptor>generic RGB</OutputDescriptor>
+    <Range inBitDepth="12i" outBitDepth="12i">
+        <minInValue>16</minInValue>
+        <maxInValue>4076</maxInValue>
+        <minOutValue>0</minOutValue>
+        <maxOutValue>4095</maxOutValue>
+    </Range>
+</ProcessList>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessList id="tagging/LogLin/Log-to-Lin-jzp_Rec2020_to_ACES" version="1.7">
+    <Info version="2.0">
+        <Release>2019.1.84</Release>
+        <Copyright>Copyright 2024 Autodesk, Inc.  All rights reserved.</Copyright>
+        <Category>
+            <Hierarchy>Log</Hierarchy>
+            <UserFacingName>Log-to-Lin (jzp) / Rec.2020</UserFacingName>
+            <Tags>
+                <Flame />
+                <Input />
+                <InputTagOnly />
+            </Tags>
+        </Category>
+        <InputSpace>
+            <ImageState>log</ImageState>
+            <ShortName>Log-to-Lin (jzp) / Rec.2020</ShortName>
+            <ID>Log-to-Lin (jzp) / Rec.2020</ID>
+        </InputSpace>
+        <OutputSpace>
+            <ImageState>scene</ImageState>
+            <ShortName>ACES2065-1</ShortName>
+            <ID>1</ID>
+        </OutputSpace>
+    </Info>
+    <Description>Log-to-lin plus primary conversion matrix</Description>
+    <InputDescriptor>Nonlinear RGB values</InputDescriptor>
+    <OutputDescriptor>Academy Color Encoding Specification (ACES2065-1)</OutputDescriptor>
+    <Log inBitDepth="12i" outBitDepth="16f" style="logToLin">
+        <Description>Josh Pines style log-to-lin (445 maps to 0.18, does not create negative values).</Description>
+        <LogParams gamma="0.600000" highlight="0.180000" refBlack="-100000.00" refWhite="445.00" shadow="0.000000" />
+    </Log>
+    <Matrix inBitDepth="16f" outBitDepth="16f">
+        <Description>REC 2020 to ACES matrix</Description>
+        <Array dim="3 3 3">
+ 0.679085612297  0.157700911164  0.163213446736
+ 0.046002004296  0.859054684639  0.094943322241
+-0.000573943194  0.028467768803  0.972106158733
+        </Array>
+    </Matrix>
+</ProcessList>
