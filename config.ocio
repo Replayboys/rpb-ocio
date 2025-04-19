@@ -114,9 +114,10 @@ displays:
     - !<View> {name: ARRI ALF2 HDR 1000nit, view_transform: ARRI ALF2 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
     - !<View> {name: ARRI Reveal HDR 1000nit, view_transform: ARRI Reveal HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
     - !<View> {name: ARRI Reveal HDR P3Limited 1000nit, view_transform: ARRI Reveal HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+    - !<View> {name: Showgrade HDR 1000nit, view_transform: Showgrade HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
 
 active_displays: []
-active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit]
+active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
 inactive_colorspaces: [CIE-XYZ-D65, sRGB - Display]
 
 
@@ -175,7 +176,7 @@ view_transforms:
     from_scene_reference: !<GroupTransform>
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
-        - !<FileTransform> {src: showgrade/showgrade.cube, interpolation: tetrahedral}
+        - !<FileTransform> {src: showgrade/showgrade_sdr.cube, interpolation: tetrahedral}
         - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
@@ -320,6 +321,15 @@ view_transforms:
         - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
     categories: [hdr-view]
 
+  - !<ViewTransform>
+    name: Showgrade HDR 1000nit
+    from_scene_reference: !<GroupTransform>
+      children:
+        - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
+        - !<FileTransform> {src: showgrade/showgrade_hdr.cube, interpolation: tetrahedral}
+        - !<ColorSpaceTransform> {src: Rec.2100-PQ - Display, dst: CIE-XYZ-D65}
+    categories: [hdr-view]
+
 display_colorspaces:
   - !<ColorSpace>
     name: CIE-XYZ-D65
@@ -435,7 +445,7 @@ colorspaces:
     from_scene_reference: !<GroupTransform>
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
-        - !<FileTransform> {src: showgrade.cube, interpolation: tetrahedral}
+        - !<FileTransform> {src: showgrade_sdr.cube, interpolation: tetrahedral}
       
   - !<ColorSpace>
     name: ReplayboysFilmicBase
