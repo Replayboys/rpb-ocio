@@ -9,32 +9,55 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 - 🖥️ Comprehensive display transforms for SDR and HDR
 - 🎮 Blender-friendly with sRGB and Non-color spaces
 - 🎯 Simplified for real-world production use
+- 📦 Extensive camera input support (ARRI, Sony, RED, Blackmagic, Canon, Panasonic)
 
 ## 🚀 Quick Start
 
-1. Place the config in your OCIO search path
-2. Set `OCIO` environment variable to point to the config
-3. Replace the showgrade LUTs with your show-specific versions
+1. Clone or download this repository:
+   ```bash
+   git clone https://github.com/replayboys/rpb-ocio.git
+   ```
+
+2. Set up the OCIO environment:
+   ```bash
+   # Linux/macOS
+   export OCIO=/path/to/rpb-ocio/config.ocio
+   
+   # Windows
+   set OCIO=C:\path\to\rpb-ocio\config.ocio
+   ```
+
+3. Replace the showgrade LUTs with your show-specific versions:
+   - Replace `luts/showgrade/showgrade_sdr.cube` for SDR
+   - Replace `luts/showgrade/showgrade_hdr.cube` for HDR
 
 ## 🎯 Supported Color Spaces
 
 ### Input Spaces
 - ACES2065-1 (Reference)
+- ADX10 / ADX16
 - ARRI LogC3 (EI800)
 - ARRI LogC4
-- Linear Alexa Wide Gamut 3
-- Linear Alexa Wide Gamut 4
+- Linear ARRI Wide Gamut 3
+- Linear ARRI Wide Gamut 4
 - Blackmagic Design Film Generation 5
-- Canon C-Log / C-Log2 / C-Log3
-- GoPro Protune
-- Panasonic V-Log
-- RED Log3G10
+- Linear BMD WideGamut Gen5
+- DaVinci Intermediate WideGamut
+- Linear DaVinci WideGamut
+- Canon Log3 CinemaGamut D55
+- Linear CinemaGamut D55
+- Panasonic V-Log V-Gamut
+- Linear V-Gamut
+- RED Log3G10 WideGamutRGB
+- Linear REDWideGamutRGB
 - Sony S-Log3/S-Gamut3
 - Sony S-Log3/S-Gamut3.Cine
 - Sony S-Log3/S-Gamut3.Cine.Venice
 - Linear S-Gamut3
 - Linear S-Gamut3.Cine
-- Linear S-Gamut3.Cine.Venice
+- Linear Venice S-Gamut3
+- Linear Venice S-Gamut3.Cine
+- Camera Rec.709
 - sRGB
 - Linear Rec.709
 
@@ -51,6 +74,8 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 - Rec.2100-PQ (HDR)
 
 ## 🎨 View Transforms
+
+"Filmic" is a custom Film-emulation look made by Finn Jaeger
 
 ### SDR Views
 - Showgrade
@@ -70,6 +95,7 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 - ACES 2.0 Filmic HDR 1000nit
 - ARRI ALF2 HDR 1000nit
 - ARRI Reveal HDR 1000nit
+- ARRI Reveal HDR P3Limited 1000nit
 
 ## 🔧 Customization
 
@@ -98,21 +124,26 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 │   │   └── showgrade_hdr.cube
 │   ├── ACES2/
 │   ├── ARRI/
-│   └── ...
+│   │   ├── alf2/
+│   │   └── reveal/
+│   ├── khronos/
+│   ├── replayboys/
+│   └── shotluts/
 └── README.md
 ```
 
+## 📝 License
+
+This configuration is provided as-is , development only
+
 ## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
-
-## 📜 License
-
-This configuration is provided as-is for production use. Please respect the original authors' work and modifications.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 👏 Credits
 
 - Original configuration by Finn Jaeger @ Replayboys
+- Help with OCIO 2.0 by Doug Walker @ Autodesk
 - ARRI transforms by ARRI
 - ACES transforms by AMPAS
 - Additional contributions by the OCIO community

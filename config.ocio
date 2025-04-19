@@ -763,6 +763,439 @@ colorspaces:
     categories: [file-io]
     allocation: uniform
 
+  - !<ColorSpace>
+    name: ADX10
+    aliases: [Input - ADX - ADX10]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ADX10 to ACES2065-1
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.ADX10_to_ACES.a1.0.3
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: ADX10_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: ADX16
+    aliases: [Input - ADX - ADX16]
+    family: ACES
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert ADX16 to ACES2065-1
+      
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.ADX16_to_ACES.a1.0.3
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: ADX16_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: Blackmagic Film Gen5
+    aliases: [bmdfilm_gen5]
+    family: Input/BlackmagicDesign
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Blackmagic Film (Gen 5) to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:BlackmagicDesign:Input:BMDFilm_Gen5_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Blackmagic Film Wide Gamut (Gen 5) to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 2.71828182845905, log_side_slope: 0.0869287606549122, log_side_offset: 0.530013339229194, lin_side_offset: 0.00549407243225781, lin_side_break: 0.005, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.647091325580708, 0.242595385134207, 0.110313289285085, 0, 0.0651915997328519, 1.02504756760476, -0.0902391673376125, 0, -0.0275570729194699, -0.0805887097177784, 1.10814578263725, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: DaVinci Intermediate WideGamut
+    aliases: [davinci_intermediate_widegamut]
+    family: Input/BlackmagicDesign
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert DaVinci Intermediate Wide Gamut to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:BlackmagicDesign:Input:DaVinci_Intermediate_WideGamut_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: DaVinci Intermediate Wide Gamut to ACES2065-1
+      children:
+        - !<LogCameraTransform> {log_side_slope: 0.07329248, log_side_offset: 0.51304736, lin_side_offset: 0.0075, lin_side_break: 0.00262409, linear_slope: 10.44426855, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.748270290272981, 0.167694659554328, 0.0840350501726906, 0, 0.0208421234689102, 1.11190474268894, -0.132746866157851, 0, -0.0915122574225729, -0.127746712807307, 1.21925897022988, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: CanonLog3 CinemaGamut D55
+    aliases: [canonlog3_cinemagamut_d55, Input - Canon - Canon-Log3 - Cinema Gamut Daylight, canonlog3_cgamutday]
+    family: Input/Canon
+    equalitygroup: ""
+    bitdepth: 32f
+    description: Convert Canon Log 3 Cinema Gamut to ACES2065-1
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<BuiltinTransform> {style: CANON_CLOG3-CGAMUT_to_ACES2065-1}
+
+  - !<ColorSpace>
+    name: Linear CinemaGamut D55
+    aliases: [lin_cinemagamut_d55, Input - Canon - Linear - Canon Cinema Gamut Daylight, lin_canoncgamutday]
+    family: Input/Canon
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear Canon Cinema Gamut (Daylight) to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Canon:Input:Linear-CinemaGamut-D55_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear Canon Cinema Gamut (Daylight) to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.763064454775734, 0.14902116113706, 0.0879143840872056, 0, 0.00365745670512393, 1.10696038037622, -0.110617837081339, 0, -0.0094077940457189, -0.218383304989987, 1.22779109903571, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear V-Gamut
+    aliases: [lin_vgamut, Input - Panasonic - Linear - V-Gamut]
+    family: Input/Panasonic
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear Panasonic V-Gamut to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Panasonic:Input:Linear_VGamut_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear Panasonic V-Gamut to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.72461670413153, 0.166915288193706, 0.108468007674764, 0, 0.021390245413146, 0.984908155703054, -0.00629840111620089, 0, -0.00923556287076561, -0.00105690563900513, 1.01029246850977, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: V-Log V-Gamut
+    aliases: [vlog_vgamut, Input - Panasonic - V-Log - V-Gamut]
+    family: Input/Panasonic
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Panasonic V-Log V-Gamut to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Panasonic:Input:VLog_VGamut_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Panasonic V-Log V-Gamut to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.224282, lin_side_slope: 155.975327, lin_side_offset: 2.55975327, lin_side_break: -0.01, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.72461670413153, 0.166915288193706, 0.108468007674764, 0, 0.021390245413146, 0.984908155703054, -0.00629840111620089, 0, -0.00923556287076561, -0.00105690563900513, 1.01029246850977, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear S-Gamut3
+    aliases: [lin_sgamut3, Input - Sony - Linear - S-Gamut3]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear S-Gamut3 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:Linear_SGamut3_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear S-Gamut3 to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.75298259539984, 0.143370216235557, 0.103647188364603, 0, 0.0217076974414429, 1.01531883550528, -0.0370265329467195, 0, -0.00941605274963355, 0.00337041785882367, 1.00604563489081, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear S-Gamut3.Cine
+    aliases: [lin_sgamut3cine, Input - Sony - Linear - S-Gamut3.Cine]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear S-Gamut3.Cine to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:Linear_SGamut3Cine_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear S-Gamut3.Cine to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.638788667185978, 0.272351433711262, 0.0888598991027595, 0, -0.00391590602528224, 1.0880732308974, -0.0841573248721177, 0, -0.0299072021239151, -0.0264325799101947, 1.05633978203411, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: S-Log3 S-Gamut3
+    aliases: [slog3_sgamut3, Input - Sony - S-Log3 - S-Gamut3]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Sony S-Log3 S-Gamut3 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:SLog3_SGamut3_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Sony S-Log3 S-Gamut3 to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.75298259539984, 0.143370216235557, 0.103647188364603, 0, 0.0217076974414429, 1.01531883550528, -0.0370265329467195, 0, -0.00941605274963355, 0.00337041785882367, 1.00604563489081, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: S-Log3 S-Gamut3.Cine
+    aliases: [slog3_sgamut3cine, Input - Sony - S-Log3 - S-Gamut3.Cine]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Sony S-Log3 S-Gamut3.Cine to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:SLog3_SGamut3Cine_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Sony S-Log3 S-Gamut3.Cine to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.638788667185978, 0.272351433711262, 0.0888598991027595, 0, -0.00391590602528224, 1.0880732308974, -0.0841573248721177, 0, -0.0299072021239151, -0.0264325799101947, 1.05633978203411, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear ARRI Wide Gamut 3
+    aliases: [lin_arriwg3, Input - ARRI - Linear - Wide Gamut 3]
+    family: Input/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear ARRI Wide Gamut 3 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:ARRI:Input:Linear_ARRI_WideGamut3_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear ARRI Wide Gamut 3 to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.680205505106279, 0.236136601606481, 0.0836578932872399, 0, 0.0854149797421404, 1.01747087860704, -0.102885858349182, 0, 0.00205652166929683, -0.0625625003847921, 1.0605059787155, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear ARRI Wide Gamut 4
+    aliases: [lin_arriwg4, Input - ARRI - Linear - Wide Gamut 4]
+    family: Input/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear ARRI Wide Gamut 4 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:ARRI:Input:Linear_ARRI_WideGamut4_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear ARRI Wide Gamut 4 to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.750957362824734, 0.144422786709757, 0.104619850465509, 0, 0.000821837079380207, 1.007397584885, -0.00821942196438358, 0, -0.000499952143533471, -0.000854177231436971, 1.00135412937497, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear BMD WideGamut Gen5
+    aliases: [lin_bmdwg_gen5, Input - Blackmagic - Linear - Wide Gamut Gen5]
+    family: Input/BlackmagicDesign
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear Blackmagic Wide Gamut (Gen 5) to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:BlackmagicDesign:Input:Linear_BMD_WideGamut_Gen5_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear Blackmagic Wide Gamut (Gen 5) to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.647091325580708, 0.242595385134207, 0.110313289285085, 0, 0.0651915997328519, 1.02504756760476, -0.0902391673376125, 0, -0.0275570729194699, -0.0805887097177784, 1.10814578263725, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear DaVinci WideGamut
+    aliases: [lin_davinciwg, Input - Blackmagic - Linear - DaVinci Wide Gamut]
+    family: Input/BlackmagicDesign
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear DaVinci Wide Gamut to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:BlackmagicDesign:Input:Linear_DaVinci_WideGamut_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear DaVinci Wide Gamut to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.748270290272981, 0.167694659554328, 0.0840350501726906, 0, 0.0208421234689102, 1.11190474268894, -0.132746866157851, 0, -0.0915122574225729, -0.127746712807307, 1.21925897022988, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear REDWideGamutRGB
+    aliases: [lin_redwg, Input - RED - Linear - Wide Gamut RGB]
+    family: Input/RED
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear RED Wide Gamut RGB to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:RED:Input:Linear_RED_WideGamutRGB_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear RED Wide Gamut RGB to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.7173387, 0.2313369, 0.0513244, 0, 0.0600271, 1.0601839, -0.1202110, 0, -0.0026693, -0.0377846, 1.0404539, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Log3G10 REDWideGamutRGB
+    aliases: [log3g10_redwg, Input - RED - Log3G10 - Wide Gamut RGB]
+    family: Input/RED
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert RED Log3G10 Wide Gamut RGB to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:RED:Input:Log3G10_RED_WideGamutRGB_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: RED Log3G10 Wide Gamut RGB to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 2, log_side_slope: 0.224282, log_side_offset: 0.0, lin_side_slope: 155.975327, lin_side_offset: 0.01, lin_side_break: 0.0, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.7173387, 0.2313369, 0.0513244, 0, 0.0600271, 1.0601839, -0.1202110, 0, -0.0026693, -0.0377846, 1.0404539, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear Venice S-Gamut3
+    aliases: [lin_venice_sgamut3, Input - Sony - Linear - Venice S-Gamut3]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear Sony Venice S-Gamut3 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:Linear_Venice_SGamut3_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear Sony Venice S-Gamut3 to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.75298259539984, 0.143370216235557, 0.103647188364603, 0, 0.0217076974414429, 1.01531883550528, -0.0370265329467195, 0, -0.00941605274963355, 0.00337041785882367, 1.00604563489081, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Linear Venice S-Gamut3.Cine
+    aliases: [lin_venice_sgamut3cine, Input - Sony - Linear - Venice S-Gamut3.Cine]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Linear Sony Venice S-Gamut3.Cine to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:Linear_Venice_SGamut3Cine_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: scene-linear
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Linear Sony Venice S-Gamut3.Cine to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [0.638788667185978, 0.272351433711262, 0.0888598991027595, 0, -0.00391590602528224, 1.0880732308974, -0.0841573248721177, 0, -0.0299072021239151, -0.0264325799101947, 1.05633978203411, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: S-Log3 Venice S-Gamut3
+    aliases: [slog3_venice_sgamut3, Input - Sony - S-Log3 - Venice S-Gamut3]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Sony Venice S-Log3 S-Gamut3 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:SLog3_Venice_SGamut3_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Sony Venice S-Log3 S-Gamut3 to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.75298259539984, 0.143370216235557, 0.103647188364603, 0, 0.0217076974414429, 1.01531883550528, -0.0370265329467195, 0, -0.00941605274963355, 0.00337041785882367, 1.00604563489081, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: S-Log3 Venice S-Gamut3.Cine
+    aliases: [slog3_venice_sgamut3cine, Input - Sony - S-Log3 - Venice S-Gamut3.Cine]
+    family: Input/Sony
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Sony Venice S-Log3 S-Gamut3.Cine to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:Sony:Input:SLog3_Venice_SGamut3Cine_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Sony Venice S-Log3 S-Gamut3.Cine to ACES2065-1
+      children:
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.255620723362659, log_side_offset: 0.410557184750733, lin_side_slope: 5.26315789473684, lin_side_offset: 0.0526315789473684, lin_side_break: 0.01125, linear_slope: 6.62194371177582, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.638788667185978, 0.272351433711262, 0.0888598991027595, 0, -0.00391590602528224, 1.0880732308974, -0.0841573248721177, 0, -0.0299072021239151, -0.0264325799101947, 1.05633978203411, 0, 0, 0, 0, 1]}
+
+  - !<ColorSpace>
+    name: Camera Rec.709
+    aliases: [camera_rec709, Input - Generic - Camera Rec.709]
+    family: Input/Generic
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert Camera Rec.709 to ACES2065-1
+      
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:OCIO:Input:Camera_Rec709_to_ACES2065-1:1.0
+    isdata: false
+    categories: [file-io]
+    encoding: sdr-video
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: Camera Rec.709 to ACES2065-1
+      children:
+        - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
+
 named_transforms:
   - !<NamedTransform>
     name: Rec.1886 - Curve
