@@ -2,7 +2,7 @@ ocio_profile_version: 2.1
 
 environment:
   {}
-search_path: "luts:luts/ACES2:luts/showgrade:luts/replayboys:luts/ARRI:luts/ARRI/alf2:luts/ARRI/reveal:luts/khronos:shotluts:syncolor_ctfs"
+search_path: "luts:syncolor_ctfs"
 strictparsing: true
 luma: [0.2126, 0.7152, 0.0722]
 name: REPLAYBOYS OCIO CONFIG
@@ -31,6 +31,8 @@ roles:
   matte_paint: sRGB - Texture
   scene_linear: ACEScg
   texture_paint: sRGB - Texture
+  default: Rec.1886 Rec.709 - Display
+  rendering: ACEScg
 
 
 viewing_rules:
@@ -68,51 +70,41 @@ file_rules:
 
 
 shared_views:
-  - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: <USE_DISPLAY_NAME>, rule: Any Video}
   - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: <USE_DISPLAY_NAME>, rule: Any Video}
+  - !<View> {name: ACES 2.0 Filmic, view_transform: ACES 2.0 Filmic, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
   - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
   - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
   - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
   - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
-
+  - !<View> {name: ARRI ALF2, view_transform: ARRI ALF2, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ARRI Reveal, view_transform: ARRI Reveal, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Khronos Neutral, view_transform: Khronos Neutral, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 2.0 HDR 1000nit, view_transform: ACES 2.0 HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 2.0 HDR P3Limited 1000nit, view_transform: ACES 2.0 HDR P3Limited 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 2.0 Filmic HDR 1000nit, view_transform: ACES 2.0 Filmic HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 1.0 HDR 1000nit, view_transform: ACES 1.0 HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ACES 1.0 HDR P3Limited 1000nit, view_transform: ACES 1.0 HDR P3Limited 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ARRI ALF2 HDR 1000nit, view_transform: ARRI ALF2 HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ARRI Reveal HDR 1000nit, view_transform: ARRI Reveal HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: ARRI Reveal HDR P3Limited 1000nit, view_transform: ARRI Reveal HDR P3Limited 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Showgrade HDR 1000nit, view_transform: Showgrade HDR 1000nit, display_colorspace: <USE_DISPLAY_NAME>, rule: Any Scene-linear or Log}
+  - !<View> {name: Raw, colorspace: Raw}
 displays:
-  Rec.709 video:
-    - !<View> {name: Raw, colorspace: Raw, rule: Any Data}
-    - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: Rec.709 video, rule: Any Video}
-    - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 2.0 Filmic, view_transform: ACES 2.0 Filmic, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI ALF2, view_transform: ARRI ALF2, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI Reveal, view_transform: ARRI Reveal, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
-    - !<View> {name: Khronos Neutral, view_transform: Khronos Neutral, display_colorspace: Rec.709 video, rule: Any Scene-linear or Log}
+  Rec.1886 Rec.709 - Display:
+    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
   
-  Display P3:
-    - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: Video (colorimetric), view_transform: Video (colorimetric), display_colorspace: Display P3, rule: Any Video}
-    - !<View> {name: ACES 2.0 SDR, view_transform: ACES 2.0 SDR, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 2.0 Filmic, view_transform: ACES 2.0 Filmic, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 1.0 SDR, view_transform: ACES 1.0 SDR, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: Showgrade, view_transform: Showgrade, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: Replayboys Filmic, view_transform: Replayboys Filmic, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI ALF2, view_transform: ARRI ALF2, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI Reveal, view_transform: ARRI Reveal, display_colorspace: Display P3, rule: Any Scene-linear or Log}
-    - !<View> {name: Khronos Neutral, view_transform: Khronos Neutral, display_colorspace: Display P3, rule: Any Scene-linear or Log}
+  Display P3 - Display:
+    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
+  
+  Rec.2100-PQ - Display:
+    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
 
-  Rec.2100-PQ:
-    - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: ACES 2.0 HDR 1000nit, view_transform: ACES 2.0 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 2.0 HDR P3Limited 1000nit, view_transform: ACES 2.0 HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 2.0 Filmic HDR 1000nit, view_transform: ACES 2.0 Filmic HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 1.0 HDR 1000nit, view_transform: ACES 1.0 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ACES 1.0 HDR P3Limited 1000nit, view_transform: ACES 1.0 HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI ALF2 HDR 1000nit, view_transform: ARRI ALF2 HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI Reveal HDR 1000nit, view_transform: ARRI Reveal HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: ARRI Reveal HDR P3Limited 1000nit, view_transform: ARRI Reveal HDR P3Limited 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
-    - !<View> {name: Showgrade HDR 1000nit, view_transform: Showgrade HDR 1000nit, display_colorspace: Rec.2100-PQ - Display, rule: Any Scene-linear or Log}
+  ST2084-P3-D65 - Display:
+    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
+
+virtual_display:
+  - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
 
 active_displays: []
 active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
@@ -150,7 +142,7 @@ view_transforms:
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScct}
         - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec709.cube, interpolation: tetrahedral}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -175,7 +167,7 @@ view_transforms:
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
         - !<FileTransform> {src: showgrade/showgrade_sdr.cube, interpolation: tetrahedral}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -184,7 +176,7 @@ view_transforms:
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
         - !<FileTransform> {src: replayboys/fj_AcesCC_2_rec709_filmic.cube, interpolation: tetrahedral}        
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -199,7 +191,7 @@ view_transforms:
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
         - !<FileTransform> {src: ARRI/alf2/ARRI_LogC2Video_709_33.cube, interpolation: tetrahedral}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -208,7 +200,7 @@ view_transforms:
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC4}
         - !<FileTransform> {src: ARRI/reveal/ARRI_LogC4-to-Gamma24_Rec709-D65_v1-65.cube, interpolation: tetrahedral}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -219,7 +211,7 @@ view_transforms:
         - !<AllocationTransform> {allocation: lg2, vars: [-9, 10]}
         - !<FileTransform> {src: khronos/pbrNeutral.cube, interpolation: tetrahedral}
         - !<ExponentTransform> {value: 2.2, direction: inverse}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -230,7 +222,7 @@ view_transforms:
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_1000nits_dim.a1.0.3
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec709_1000nits_dim.a1.0.3
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec2020_1000nits_dim.a1.0.3
-    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0, params: {max_display_luminance: 1000, surround: dim}}
+    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0}
     categories: [hdr-view]
 
   - !<ViewTransform>
@@ -290,7 +282,7 @@ view_transforms:
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.RGBmonitor_1000nits_dim.a1.0.3
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec709_1000nits_dim.a1.0.3
       ACEStransformID: urn:ampas:aces:transformId:v1.5:ODT.Academy.Rec2020_1000nits_dim.a1.0.3
-    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0, params: {max_display_luminance: 1000, surround: dim, primaries: p3}}
+    from_scene_reference: !<BuiltinTransform> {style: ACES-OUTPUT - ACES2065-1_to_CIE-XYZ-D65 - SDR-VIDEO_1.0}
     categories: [hdr-view]
 
   - !<ViewTransform>
@@ -303,7 +295,7 @@ view_transforms:
         - !<FileTransform> {src: replayboys/fj_AcesCC_2_AcesCC_LMT_filmic.cube, interpolation: tetrahedral}
         - !<ColorSpaceTransform> {src: ACEScc, dst: ACEScct}
         - !<FileTransform> {src: ACES2/ACES2 Candidate CAMDRT rev060 Rec709.cube, interpolation: tetrahedral}
-        - !<ColorSpaceTransform> {src: Rec.709 video, dst: CIE-XYZ-D65}
+        - !<ColorSpaceTransform> {src: Rec.1886 Rec.709 - Display, dst: CIE-XYZ-D65}
     categories: [sdr-view]
 
   - !<ViewTransform>
@@ -353,7 +345,7 @@ display_colorspaces:
     from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_sRGB}
 
   - !<ColorSpace>
-    name: Rec.709 video
+    name: Rec.1886 Rec.709 - Display
     aliases: [rec1886_rec709_display]
     family: Display
     equalitygroup: ""
@@ -405,7 +397,7 @@ display_colorspaces:
     from_display_reference: !<BuiltinTransform> {style: DISPLAY - CIE-XYZ-D65_to_G2.6-P3-D65}
 
   - !<ColorSpace>
-    name: Display P3
+    name: Display P3 - Display
     family: Display
     equalitygroup: ""
     bitdepth: 32f
@@ -443,7 +435,7 @@ colorspaces:
     from_scene_reference: !<GroupTransform>
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ARRI LogC3 (EI800)}
-        - !<FileTransform> {src: showgrade_sdr.cube, interpolation: tetrahedral}
+        - !<FileTransform> {src: showgrade/showgrade_sdr.cube, interpolation: tetrahedral}
       
   - !<ColorSpace>
     name: ReplayboysFilmicBase
@@ -456,7 +448,7 @@ colorspaces:
     from_scene_reference: !<GroupTransform>
       children:
         - !<ColorSpaceTransform> {src: ACES2065-1, dst: ACEScc}
-        - !<FileTransform> {src: fj_AcesCC_2_rec709_filmic.cube, interpolation: tetrahedral}        
+        - !<FileTransform> {src: replayboys/fj_AcesCC_2_rec709_filmic.cube, interpolation: tetrahedral}        
 
   - !<ColorSpace>
     name: ACEScc
