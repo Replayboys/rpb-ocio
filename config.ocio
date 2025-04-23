@@ -2,7 +2,7 @@ ocio_profile_version: 2.1
 
 environment:
   {}
-search_path: "luts:syncolor_ctfs"
+search_path: "luts"
 strictparsing: true
 luma: [0.2126, 0.7152, 0.0722]
 name: REPLAYBOYS OCIO CONFIG
@@ -92,19 +92,19 @@ shared_views:
   - !<View> {name: Raw, colorspace: Raw}
 displays:
   Rec.1886 Rec.709 - Display:
-    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
+    - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
   
   Display P3 - Display:
-    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
+    - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
   
   Rec.2100-PQ - Display:
-    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
+    - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
 
   ST2084-P3-D65 - Display:
-    - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
+    - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
 
 virtual_display:
-  - !<Views> [Raw, Video (colorimetric), ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
+  - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
 
 active_displays: []
 active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
@@ -182,7 +182,10 @@ view_transforms:
   - !<ViewTransform>
     name: Video (colorimetric)
     description: colorimetric_view
-    from_display_reference: !<FileTransform> {src: view/colorimetric_view.ctf}
+    from_display_reference: !<GroupTransform>
+      name: Colorimetric View
+      children:
+        - !<MatrixTransform> {matrix: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]}
     categories: [nt-view]
 
   - !<ViewTransform>

@@ -10,6 +10,7 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 - 🎮 Blender-friendly with sRGB and Non-color spaces
 - 🎯 Simplified for real-world production use
 - 📦 Extensive camera input support (ARRI, Sony, RED, Blackmagic, Canon, Panasonic)
+- Support for ACES 2.0 (!!USING THE NOT-PERFECT LUT IMPLEMENTATION FROM PRV060!!) in OCIO 2.1 for backwards compatibility. (if anyone knows a better way LMK)
 
 ## 🚀 Quick Start
 
@@ -151,7 +152,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - ARRI transforms by ARRI
 - ACES transforms by AMPAS
 - Additional contributions by the OCIO community
-- Syncolor CTFs from Autodesk 
 - Shebanjah Klaasen for providing the AppleLog IDT as 1D LUT and matrix
 ---
 
