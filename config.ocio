@@ -66,7 +66,7 @@ file_rules:
   - !<Rule> {name: ACEScg, colorspace: ACEScg, pattern: "*[aA][cC][eE][sS][cC][gG]*", extension: "*"}
   - !<Rule> {name: OpenEXR, colorspace: ACEScg, pattern: "*", extension: "[eE][xX][rR]"}
 
-  - !<Rule> {name: Default, colorspace: ACES2065-1}
+  - !<Rule> {name: Default, colorspace: default}
 
 
 shared_views:
