@@ -107,7 +107,7 @@ virtual_display:
   - !<Views> [ACES 2.0 SDR, Video (colorimetric), Raw, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Showgrade, Replayboys Filmic, ARRI ALF2, ARRI Reveal, Khronos Neutral]
 
 active_displays: []
-active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Un-tone-mapped, Raw, Video (colorimetric), ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
+active_views: [Showgrade, Replayboys Filmic, ACES 2.0 SDR, ACES 2.0 Filmic, ACES 1.0 SDR, Video (colorimetric), Un-tone-mapped, Raw, ARRI ALF2, ARRI Reveal, Khronos Neutral, ACES 2.0 HDR 1000nit, ACES 2.0 HDR P3Limited 1000nit, ACES 2.0 Filmic HDR 1000nit, ACES 1.0 HDR 1000nit, ACES 1.0 HDR P3Limited 1000nit, ARRI ALF2 HDR 1000nit, ARRI Reveal HDR 1000nit, ARRI Reveal HDR P3Limited 1000nit, Showgrade HDR 1000nit]
 inactive_colorspaces: [CIE-XYZ-D65, sRGB - Display]
 
 
@@ -417,7 +417,7 @@ display_colorspaces:
 colorspaces:
   - !<ColorSpace>
     name: ACES2065-1
-    aliases: [aces2065_1, ACES - ACES2065-1, lin_ap0]
+    aliases: [aces2065_1, ACES - ACES2065-1, lin_ap0, aces, lin_ap0_scene]
     family: ACES
     equalitygroup: ""
     bitdepth: 32f
@@ -487,7 +487,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: ACEScg
-    aliases: [ACES - ACEScg, lin_ap1]
+    aliases: [ACES - ACEScg, lin_ap1, lin_ap1_scene]
     family: ACES
     equalitygroup: ""
     bitdepth: 32f
@@ -503,7 +503,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear P3-D65
-    aliases: [lin_p3d65, Utility - Linear - P3-D65]
+    aliases: [lin_p3d65, Utility - Linear - P3-D65, lin_displayp3, lin_p3d65_scene, Linear Display P3]
     family: Utility
     equalitygroup: ""
     bitdepth: 32f
@@ -522,7 +522,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear Rec.2020
-    aliases: [lin_rec2020, Utility - Linear - Rec.2020]
+    aliases: [lin_rec2020, Utility - Linear - Rec.2020, scene-linear Rec 2020, lin_rec2020_scene]
     family: Utility
     equalitygroup: ""
     bitdepth: 32f
@@ -541,7 +541,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear Rec.709 (sRGB)
-    aliases: [lin_rec709_srgb, Utility - Linear - Rec.709, lin_rec709, lin_srgb, Utility - Linear - sRGB]
+    aliases: [lin_rec709_srgb, Utility - Linear - Rec.709, lin_rec709, lin_srgb, Utility - Linear - sRGB, scene-linear Rec 709/sRGB, lin_rec709_scene]
     family: Utility
     equalitygroup: ""
     bitdepth: 32f
@@ -718,7 +718,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: ARRI LogC3 (EI800)
-    aliases: [arri_logc3_ei800, Input - ARRI - V3 LogC (EI800) - Wide Gamut, logc3ei800_alexawide, AlexaV3LogC]
+    aliases: [arri_logc3_ei800, Input - ARRI - V3 LogC (EI800) - Wide Gamut, logc3ei800_alexawide, AlexaV3LogC, LogC (v3-EI800), AlexaWideGamut, ARRI LogC]
     family: Input/ARRI
     equalitygroup: ""
     bitdepth: 32f
@@ -864,7 +864,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear V-Gamut
-    aliases: [lin_vgamut, Input - Panasonic - Linear - V-Gamut]
+    aliases: [lin_vgamut, Input - Panasonic - Linear - V-Gamut, scene-linear VGamut]
     family: Input/Panasonic
     equalitygroup: ""
     bitdepth: 32f
@@ -883,7 +883,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: V-Log V-Gamut
-    aliases: [vlog_vgamut, Input - Panasonic - V-Log - V-Gamut]
+    aliases: [vlog_vgamut, Input - Panasonic - V-Log - V-Gamut, Panasonic V-Log / V-Gamut, Panasonic V-Log/V-Gamut]
     family: Input/Panasonic
     equalitygroup: ""
     bitdepth: 32f
@@ -903,7 +903,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear S-Gamut3
-    aliases: [lin_sgamut3, Input - Sony - Linear - S-Gamut3]
+    aliases: [lin_sgamut3, Input - Sony - Linear - S-Gamut3, scene-linear SGamut3]
     family: Input/Sony
     equalitygroup: ""
     bitdepth: 32f
@@ -941,7 +941,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: S-Log3 S-Gamut3
-    aliases: [slog3_sgamut3, Input - Sony - S-Log3 - S-Gamut3]
+    aliases: [slog3_sgamut3, Input - Sony - S-Log3 - S-Gamut3, SLog3 / SGamut3]
     family: Input/Sony
     equalitygroup: ""
     bitdepth: 32f
@@ -961,7 +961,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: S-Log3 S-Gamut3.Cine
-    aliases: [slog3_sgamut3cine, Input - Sony - S-Log3 - S-Gamut3.Cine]
+    aliases: [slog3_sgamut3cine, Input - Sony - S-Log3 - S-Gamut3.Cine, SLog3 / SGamut3.Cine]
     family: Input/Sony
     equalitygroup: ""
     bitdepth: 32f
@@ -981,7 +981,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear ARRI Wide Gamut 3
-    aliases: [lin_arriwg3, Input - ARRI - Linear - Wide Gamut 3]
+    aliases: [lin_arriwg3, Input - ARRI - Linear - Wide Gamut 3, scene-linear Alexa WideGamut, lin_alexawide]
     family: Input/ARRI
     equalitygroup: ""
     bitdepth: 32f
@@ -1057,7 +1057,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Linear REDWideGamutRGB
-    aliases: [lin_redwg, Input - RED - Linear - Wide Gamut RGB]
+    aliases: [lin_redwg, Input - RED - Linear - Wide Gamut RGB, Scene-linear / REDWideGamutRGB, lin_rwg]
     family: Input/RED
     equalitygroup: ""
     bitdepth: 32f
@@ -1076,7 +1076,7 @@ colorspaces:
 
   - !<ColorSpace>
     name: Log3G10 REDWideGamutRGB
-    aliases: [log3g10_redwg, Input - RED - Log3G10 - Wide Gamut RGB]
+    aliases: [log3g10_redwg, Input - RED - Log3G10 - Wide Gamut RGB, Log3G10 / REDWideGamutRGB, rl3g10_rwg]
     family: Input/RED
     equalitygroup: ""
     bitdepth: 32f
