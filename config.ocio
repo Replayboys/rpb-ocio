@@ -1188,6 +1188,24 @@ colorspaces:
       children:
         - !<MatrixTransform> {matrix: [2.52168618674388, -1.13413098823972, -0.387555198504164, 0, -0.276479914229922, 1.37271908766826, -0.096239173438334, 0, -0.0153780649660342, -0.152975335867399, 1.16835340083343, 0, 0, 0, 0, 1]}
 
+  - !<ColorSpace>
+    name: AppleLog
+    aliases: [applelog]
+    family: Input/Apple
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      Convert AppleLog to ACES2065-1
+    isdata: false
+    categories: [file-io]
+    encoding: log
+    allocation: uniform
+    to_scene_reference: !<GroupTransform>
+      name: AppleLog to ACES2065-1
+      children:
+        - !<FileTransform> {src: apple/AppleLogToLin-v1.0.spi1d, interpolation: linear}
+        - !<MatrixTransform> {matrix: [0.6788911506, 0.1588684224, 0.1622404270, 0, 0.0455708309, 0.8607127720, 0.0937163971, 0, -0.0004857104, 0.0250601957, 0.9754255146, 0, 0, 0, 0, 1]}
+
 named_transforms:
   - !<NamedTransform>
     name: Rec.1886 - Curve

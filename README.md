@@ -60,6 +60,7 @@ A streamlined and production-ready OpenColorIO configuration for modern color wo
 - Camera Rec.709
 - sRGB
 - Linear Rec.709
+- AppleLog
 
 ### Working Spaces
 - ACEScg
@@ -151,6 +152,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - ACES transforms by AMPAS
 - Additional contributions by the OCIO community
 - Syncolor CTFs from Autodesk 
+- Shebanjah Klaasen for providing the AppleLog IDT as 1D LUT and matrix
 ---
 
 Made with ❤️ by Replayboys // Finn Jaeger
