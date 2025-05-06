@@ -1081,18 +1081,24 @@ colorspaces:
     equalitygroup: ""
     bitdepth: 32f
     description: |
-      Convert RED Log3G10 Wide Gamut RGB to ACES2065-1
-      
-      CLFtransformID: urn:aswf:ocio:transformId:1.0:RED:Input:Log3G10_RED_WideGamutRGB_to_ACES2065-1:1.0
+      Convert RED Log3G10 REDWideGamutRGB to ACES2065-1
+
+      CLFtransformID: urn:aswf:ocio:transformId:1.0:RED:Input:Log3G10_REDWideGamutRGB_to_ACES2065-1:1.0
+      ACEStransformID: urn:ampas:aces:transformId:v2.0:CSC.Red.Log3G10_RWG_to_ACES.a2.v1
+
+      AMF Components
+      --------------
+      ACEStransformID: urn:ampas:aces:transformId:v1.5:ACEScsc.Academy.Log3G10_RWG_to_ACES.a1.1.0
+      ACEStransformID: urn:ampas:aces:transformId:v2.0:CSC.Red.ACES_to_Log3G10_RWG.a2.v1
     isdata: false
     categories: [file-io]
     encoding: log
     allocation: uniform
     to_scene_reference: !<GroupTransform>
-      name: RED Log3G10 Wide Gamut RGB to ACES2065-1
+      name: RED Log3G10 REDWideGamutRGB to ACES2065-1
       children:
-        - !<LogCameraTransform> {base: 2, log_side_slope: 0.224282, log_side_offset: 0.0, lin_side_slope: 155.975327, lin_side_offset: 0.01, lin_side_break: 0.0, direction: inverse}
-        - !<MatrixTransform> {matrix: [0.7173387, 0.2313369, 0.0513244, 0, 0.0600271, 1.0601839, -0.1202110, 0, -0.0026693, -0.0377846, 1.0404539, 0, 0, 0, 0, 1]}
+        - !<LogCameraTransform> {base: 10, log_side_slope: 0.224282, lin_side_slope: 155.975327, lin_side_offset: 2.55975327, lin_side_break: -0.01, direction: inverse}
+        - !<MatrixTransform> {matrix: [0.785058804068092, 0.0838587565440846, 0.131082439387823, 0, 0.0231738348454756, 1.08789754919233, -0.111071384037806, 0, -0.0737604353682082, -0.314590072290208, 1.38835050765842, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
     name: Linear Venice S-Gamut3
